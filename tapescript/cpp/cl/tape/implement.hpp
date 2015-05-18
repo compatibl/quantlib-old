@@ -5,7 +5,7 @@ This file is part of TapeScript, an open source library and tape encoding
 standard for adjoint algorithmic differentiation (AAD), available from
 
     http://github.com/compatibl/tapescript (source)
-    http://modval.org/tapescript (documentation)
+    http://tapescript.org (documentation)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __tape_implement_hpp__
-#define __tape_implement_hpp__
+#ifndef __cl_tape_implement_hpp__
+#define __cl_tape_implement_hpp__
 
-#include <tape/import.hpp>
+#include <cl/tape/import.hpp>
 
-#ifndef TAPE_API
-#   define TAPE_API TAPE_IMPLEMENT
+#ifndef CL_TAPE
+#   define CL_TAPE CL_IMPLEMENT
 #endif
 
-#endif // __tape_implement_hpp__
+#endif // __cl_tape_implement_hpp__
