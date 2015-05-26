@@ -23,7 +23,8 @@ limitations under the License.
 #include <boost/test/unit_test.hpp>
 #include <boost/timer.hpp>
 #include <cl/tape/tape.hpp>
-#include <cl/tape/tests/testutil.hpp>
+#include <cl/tape/util/testutil.hpp>
+#include <cl/tape/util/testoutput.hpp>
 
 static int dimension = (int)1e+7;
 
@@ -50,7 +51,12 @@ inline ResultType dotProduct(std::vector<LType> const& lhs, std::vector<RType> c
 // Vectors are not declared as independent.
 void performanceTestWithoutTape()
 {
-    std::cout << std::endl << "Test performance for dot product calculation without tape recording" << std::endl;
+    std::ofstream out("..\\..\\..\\..\\..\\..\\..\\output\\en-us\\Tape\\CppAD\\Tests\\DotProductTest\\Log.csv",
+        std::ofstream::out | std::ofstream::app);
+
+    out << std::endl << "Test performance for dot product calculation without tape recording" << std::endl;
+    out << "Dot product of two vectors (size " << dimension << " ) is being calculated" << std::endl;
+
     std::vector<CppAD::AD<double>> leftAD = vectorCast<CppAD::AD<double>>(leftVector);
     std::vector<CppAD::AD<double>> rightAD = vectorCast<CppAD::AD<double>>(rightVector);
 
@@ -59,7 +65,7 @@ void performanceTestWithoutTape()
 
     CppAD::AD<double> ADResult = 0;
     cl::TapeDouble TapeDoubleResult = 0;
-
+    out << "Start of calculating: " << currentTime() << std::endl;
     boost::timer timer;
     ADResult = dotProduct<CppAD::AD<double>>(leftAD, rightAD);
     double ADtime = timer.elapsed();
@@ -67,10 +73,10 @@ void performanceTestWithoutTape()
     timer.restart();
     TapeDoubleResult = dotProduct<cl::TapeDouble >(leftTapeDouble, rightTapeDouble);
     double CppTime = timer.elapsed();
-
-    std::cout << "\tTime for AD<double> " << ADtime << " s" << std::endl;
-    std::cout << "\tTime for TapeDouble " << CppTime << " s" << std::endl;
-    std::cout << "\tThe relative difference  " << 1.0 * std::abs(CppTime - ADtime) / std::max(CppTime, ADtime)
+    out << "End of calculating" << std::endl;
+    out << "\tTime for AD<double> " << ADtime << " s" << std::endl;
+    out << "\tTime for TapeDouble " << CppTime << " s" << std::endl;
+    out << "\tThe relative difference  " << 1.0 * std::abs(CppTime - ADtime) / std::max(CppTime, ADtime)
         << std::endl ;
 
 }
@@ -79,7 +85,12 @@ void performanceTestWithoutTape()
 // Vectors are declared as independent.
 void performanceTestWithTape()
 {
-    std::cout << std::endl << "Test performance for dot product calculation with tape recording" << std::endl;
+
+    std::ofstream out("..\\..\\..\\..\\..\\..\\..\\output\\en-us\\Tape\\CppAD\\Tests\\DotProductTest\\Log.csv",
+        std::ofstream::out | std::ofstream::app);
+
+    out << std::endl << "Test performance for dot product calculation with tape recording" << std::endl;
+    out << "Dot product of two vectors (size " << dimension << " ) is being calculated" << std::endl;
     std::vector<CppAD::AD<double>> leftAD = vectorCast<CppAD::AD<double>>(leftVector);
     std::vector<CppAD::AD<double>> rightAD = vectorCast<CppAD::AD<double>>(rightVector);
 
@@ -90,7 +101,7 @@ void performanceTestWithTape()
     cl::TapeDouble TapeDoubleResult = 0;
 
     CppAD::Independent(leftAD);
-
+    out << "Start of calculating: " << currentTime() << std::endl;
     boost::timer timer;
     ADResult = dotProduct<CppAD::AD<double>>(leftAD, rightAD);
     CppAD::ADFun<double> adfun(leftAD, std::vector<CppAD::AD<double>>({ ADResult }));
@@ -102,21 +113,21 @@ void performanceTestWithTape()
     TapeDoubleResult = dotProduct<cl::TapeDouble >(leftTapeDouble, rightTapeDouble);
     cl::TapeFunction<double> fcl(leftTapeDouble, std::vector<cl::TapeDouble>({ TapeDoubleResult }));
     double CppTime = timer.elapsed();
-
-    std::cout << "\tTime for AD<double> " << ADtime << " s" << std::endl;
-    std::cout << "\tTime for TapeDouble " << CppTime << " s" << std::endl;
-    std::cout << "\tThe relative difference  " << 1.0 * std::abs(CppTime - ADtime) / std::max(CppTime, ADtime)
+    out << "End of calculating" << std::endl;
+    out << "\tTime for AD<double> " << ADtime << " s" << std::endl;
+    out << "\tTime for TapeDouble " << CppTime << " s" << std::endl;
+    out << "\tThe relative difference  " << 1.0 * std::abs(CppTime - ADtime) / std::max(CppTime, ADtime)
         << std::endl ;
 }
 
 BOOST_AUTO_TEST_SUITE(DotProductTest)
 
-    BOOST_AUTO_TEST_CASE(WithoutTapeRecord)
+BOOST_AUTO_TEST_CASE(WithoutTapeRecordingDotProductTest)
 {
-        performanceTestWithoutTape();
+    performanceTestWithoutTape();
 }
 
-BOOST_AUTO_TEST_CASE(WithTapeRecord)
+BOOST_AUTO_TEST_CASE(WithTapeRecordingDotProductTest)
 {
     performanceTestWithTape();
 }

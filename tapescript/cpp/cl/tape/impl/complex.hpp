@@ -20,8 +20,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __cl_tape_impl_complex_hpp__
-#define __cl_tape_impl_complex_hpp__
+#ifndef cl_tape_impl_complex_hpp
+#define cl_tape_impl_complex_hpp
 
 #include <complex>
 
@@ -29,7 +29,7 @@ namespace ext = CppAD;
 
 namespace std
 {
-    // The complex partial specialization
+    /// <summary>The complex type based on tape double.</summary>
     template<>
     class complex<cl::TapeDouble>
     {
@@ -41,8 +41,7 @@ namespace std
 
         enum en_complex_type { None = 0 , RealBase = 1 >> 1, ComplBase = 1 >> 2, BothBase = 1 >> 3 };
 
-        //  If we initialized by certain values this is real base type
-        // and type of valaue is
+        // Initialization from real and imaginary parts
         complex(real_type const& real, real_type const& imag)
             : complex_(real.value(), imag.value())
             , value_()
@@ -64,7 +63,7 @@ namespace std
         {    }
 
         inline real_type real(real_type const& right)
-        {	
+        {
             if (mode_ & RealBase)
             {
                 complex_.real(right.value());
@@ -93,7 +92,7 @@ namespace std
         }
 
         inline real_type real() const
-        {	
+        {
             if (mode_ & RealBase)
             {
                 return complex_.real();
@@ -111,7 +110,7 @@ namespace std
         }
 
         inline complex_type& operator=(const real_type& right)
-        {	
+        {
             if (mode_ & RealBase)
             {
                 complex_.real(right.value());
@@ -252,5 +251,5 @@ namespace std
 
 }
 
-#endif // __cl_tape_impl_complex_hpp__
+#endif // cl_tape_impl_complex_hpp
 

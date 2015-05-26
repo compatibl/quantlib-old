@@ -22,8 +22,13 @@ limitations under the License.
 
 #include <boost/test/unit_test.hpp>
 #include <boost/timer.hpp>
-#include <cppad/cppad.hpp>
 #include <cl/tape/tape.hpp>
+#include <cl/tape/util/testutil.hpp>
+
+namespace
+{
+    std::ofstream out("..\\..\\..\\..\\..\\output\\en-us\\Tape\\CppAD\\Tests\\ArithmeticPerformanceTest\\Log.csv");
+}
 
 using namespace std;
 
@@ -36,11 +41,14 @@ inline void func(vector<T>& x, vector<T>& y)
     y[3] = x[3] / x[0];
 }
 
-void elementaryOperationsPerformance()
+// Tests performance of arithmetic operations for AD<double> and TapeDouble
+void arithmeticPerformanceTest()
 {
-    cout << "Test performance of elementary operations for AD<double> and TapeDouble" << endl << endl;
-
     const size_t iterNum = 100000;
+
+    string sh = "Test performance of arithmetic operations for AD<double> and TapeDouble " + currentTime() + "\n\n";
+    cout << endl << sh;
+    out << sh;
 
     // AD<double> time of the start and the stop of tape recording
     boost::timer timer;
@@ -162,36 +170,40 @@ void elementaryOperationsPerformance()
     }
     double clJacobianTime = timer.elapsed() / iterNum - clTapeTime;
 
-    cout << "\tStart and stop of tape recording" << endl
+    stringstream ss;
+    ss << "\tStart and stop of tape recording" << endl
         << "\tTime for AD<double> : " << cppADStartStopTime << " s" << endl
         << "\tTime for TapeDouble : " << clStartStopTime << " s" << endl
         << "\tTimes ratio TapeDouble / AD<double> : " << clStartStopTime / cppADStartStopTime << endl
-        << endl;
-    cout << "\tTape recording" << endl
+        << endl
+        << "\tTape recording" << endl
         << "\tTime for AD<double> : " << cppADTapeTime << " s" << endl
         << "\tTime for TapeDouble : " << clTapeTime << " s" << endl
         << "\tTimes ratio TapeDouble / AD<double> : " << clTapeTime / cppADTapeTime << endl
-        << endl;
-    cout << "\tForward mode" << endl
+        << endl
+        << "\tForward mode" << endl
         << "\tTime for AD<double> : " << cppADForwardTime << " s" << endl
         << "\tTime for TapeDouble : " << clForwardTime << " s" << endl
         << "\tTimes ratio TapeDouble / AD<double> : " << clForwardTime / cppADForwardTime << endl
-        << endl;
-    cout << "\tReverse mode" << endl
+        << endl
+        << "\tReverse mode" << endl
         << "\tTime for AD<double> : " << cppADReverseTime << " s" << endl
         << "\tTime for TapeDouble : " << clReverseTime << " s" << endl
         << "\tTimes ratio TapeDouble / AD<double> : " << clReverseTime / cppADReverseTime << endl
-        << endl;
-    cout << "\tJacobian calculation" << endl
+        << endl
+        << "\tJacobian calculation" << endl
         << "\tTime for AD<double> : " << cppADJacobianTime << " s" << endl
         << "\tTime for TapeDouble : " << clJacobianTime << " s" << endl
         << "\tTimes ratio TapeDouble / AD<double> : " << clJacobianTime / cppADJacobianTime << endl
         << endl;
+    string const& sout = ss.str();
+    cout << sout;
+    out << sout;
 }
 
-BOOST_AUTO_TEST_CASE(ElementaryOperationsPerformance)
+BOOST_AUTO_TEST_CASE(ArithmeticPerformanceTest)
 {
-    elementaryOperationsPerformance();
+    arithmeticPerformanceTest();
 }
 
 

@@ -20,8 +20,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __cl_tape_impl_doublemath_hpp__
-#define __cl_tape_impl_doublemath_hpp__
+#ifndef cl_tape_impl_doublemath_hpp
+#define cl_tape_impl_doublemath_hpp
 
 #include <cl/tape/impl/double.hpp>
 #include <complex>
@@ -35,6 +35,7 @@ namespace cl
     }
 }
 
+/// <summary>Provides math functions for TapeDouble.</summary>
 namespace std
 {
     inline cl::TapeDouble fabs(cl::TapeDouble x)
@@ -61,6 +62,8 @@ namespace std
 
     inline cl::TapeDouble floor(cl::TapeDouble x)
     {
+        // Conversion from TapeDouble to native double is permitted
+        // only when tape pointer is null, otherwise exception is thrown
 #ifdef CL_TAPE_CPPAD
         return  cl::TapeDouble(std::floor(CppAD::Value(x.value())));  //!!! Review
 #elif CL_TAPE_ADOLC
@@ -73,6 +76,8 @@ namespace std
     inline cl::TapeDouble ceil(cl::TapeDouble x)
     {
 #ifdef CL_TAPE_CPPAD
+        // Conversion from TapeDouble to native double is permitted
+        // only when tape pointer is null, otherwise exception is thrown
         return cl::TapeDouble(std::ceil(CppAD::Value(x.value())));  //!!! Review
 #elif CL_TAPE_ADOLC
         cl::throw_("Not implemented"); return x;
@@ -520,4 +525,4 @@ namespace CL_EXTERNAL_NAMESPACE
 }
 #endif
 
-#endif  // __cl_tape_impl_doublemath_hpp__
+#endif  // cl_tape_impl_doublemath_hpp

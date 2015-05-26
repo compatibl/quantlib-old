@@ -20,8 +20,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __cl_tape_impl_double_hpp__
-#define __cl_tape_impl_double_hpp__
+#ifndef cl_tape_impl_double_hpp
+#define cl_tape_impl_double_hpp
 
 #include <cl/tape/declare.hpp>
 #include <cl/tape/impl/doubleconverter.hpp>
@@ -55,10 +55,10 @@ namespace cl
 //!! Should we have this, can break AD when misused; or it could stop recording when invoked
 #ifdef CL_TAPE_CAN_GET_VALUE
         template <typename TapeType>
-        friend inline typename TapeType::value_type const&  cl::detail::cvalue(TapeType const& tapetype);
+        friend inline typename TapeType::value_type const&  cl::tapescript::cvalue(TapeType const& tapetype);
 
         template <typename TapeType>
-        friend inline typename TapeType::value_type& cl::detail::value(TapeType& tapetype);
+        friend inline typename TapeType::value_type& cl::tapescript::value(TapeType& tapetype);
 #endif
 
     public: // TYPEDEFS
@@ -300,4 +300,4 @@ namespace cl
     };
 }
 
-#endif  // __cl_tape_impl_double_hpp__
+#endif  // cl_tape_impl_double_hpp

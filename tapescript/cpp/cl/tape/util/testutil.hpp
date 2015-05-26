@@ -20,10 +20,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __cl_tape_impl_testutil_hpp__
-#define __cl_tape_impl_testutil_hpp__
+#ifndef cl_tape_util_testutil_hpp
+#define cl_tape_util_testutil_hpp
 
 #include <vector>
+#include <time.h>
 
 // Return vector of random double numbers from range [0, 10).
 inline std::vector<double> getRandomVector(int dim)
@@ -50,4 +51,16 @@ inline std::vector<LType> vectorCast(std::vector<RType> const& rhs)
     return result;
 }
 
-#endif // __cl_tape_impl_testutil_hpp__
+inline std::string currentTime()
+{
+    time_t now = time(nullptr);
+    struct tm * tm_today = localtime(&now);
+
+    std::stringstream ss;
+    ss << tm_today->tm_hour << "h " << tm_today->tm_min << "m "
+        << tm_today->tm_sec << "s ";
+
+    return ss.str();
+}
+
+#endif // cl_tape_util_testutil_hpp

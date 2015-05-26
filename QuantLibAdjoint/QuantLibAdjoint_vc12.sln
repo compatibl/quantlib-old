@@ -4,12 +4,12 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boost.Cpp11.2013.x64", "..\dependencies\cpp\boost\Boost.Cpp11.2013.x64.vcxproj", "{05FCBA2D-EBAF-4265-94E6-CB33526C758F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuantLibAdjoint", "QuantLibAdjoint.vcxproj", "{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuantLibAdjoint", "QuantLibAdjoint.vcxproj", "{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testsuite", "test-suite\testsuite.vcxproj", "{A613045C-34AF-4706-AA3C-730C92524F74}"
 	ProjectSection(ProjectDependencies) = postProject
 		{05FCBA2D-EBAF-4265-94E6-CB33526C758F} = {05FCBA2D-EBAF-4265-94E6-CB33526C758F}
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA} = {AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2} = {20A06E69-CC15-4BD9-8665-283CE8BFC1E2}
 	EndProjectSection
 EndProject
 Global
@@ -40,22 +40,22 @@ Global
 		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|Mixed Platforms.Build.0 = Release|x64
 		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|x64.ActiveCfg = Release|x64
 		{05FCBA2D-EBAF-4265-94E6-CB33526C758F}.Release|x64.Build.0 = Release|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (static runtime)|Mixed Platforms.ActiveCfg = Debug (static runtime)|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (static runtime)|Mixed Platforms.Build.0 = Debug (static runtime)|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug (static runtime)|x64.Build.0 = Debug (static runtime)|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug|Mixed Platforms.Build.0 = Debug|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug|x64.ActiveCfg = Debug|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Debug|x64.Build.0 = Debug|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Release (static runtime)|Mixed Platforms.ActiveCfg = Release (static runtime)|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Release (static runtime)|Mixed Platforms.Build.0 = Release (static runtime)|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Release (static runtime)|x64.ActiveCfg = Release (static runtime)|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Release (static runtime)|x64.Build.0 = Release (static runtime)|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Release|Mixed Platforms.ActiveCfg = Release|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Release|Mixed Platforms.Build.0 = Release|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Release|x64.ActiveCfg = Release|x64
-		{AD0A27DA-91DA-46A2-ACBD-296C419ED3AA}.Release|x64.Build.0 = Release|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Debug (static runtime)|Mixed Platforms.ActiveCfg = Debug (static runtime)|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Debug (static runtime)|Mixed Platforms.Build.0 = Debug (static runtime)|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Debug (static runtime)|x64.Build.0 = Debug (static runtime)|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Debug|x64.ActiveCfg = Debug|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Debug|x64.Build.0 = Debug|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Release (static runtime)|Mixed Platforms.ActiveCfg = Release (static runtime)|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Release (static runtime)|Mixed Platforms.Build.0 = Release (static runtime)|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Release (static runtime)|x64.ActiveCfg = Release (static runtime)|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Release (static runtime)|x64.Build.0 = Release (static runtime)|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Release|Mixed Platforms.Build.0 = Release|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Release|x64.ActiveCfg = Release|x64
+		{20A06E69-CC15-4BD9-8665-283CE8BFC1E2}.Release|x64.Build.0 = Release|x64
 		{A613045C-34AF-4706-AA3C-730C92524F74}.Debug (static runtime)|Mixed Platforms.ActiveCfg = Debug (static runtime)|x64
 		{A613045C-34AF-4706-AA3C-730C92524F74}.Debug (static runtime)|Mixed Platforms.Build.0 = Debug (static runtime)|x64
 		{A613045C-34AF-4706-AA3C-730C92524F74}.Debug (static runtime)|x64.ActiveCfg = Debug (static runtime)|x64

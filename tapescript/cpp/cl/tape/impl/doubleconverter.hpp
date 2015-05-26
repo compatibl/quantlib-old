@@ -20,14 +20,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __cl_tape_impl_doubleconverter_hpp__
-#define __cl_tape_impl_doubleconverter_hpp__
+#ifndef cl_tape_impl_doubleconverter_hpp
+#define cl_tape_impl_doubleconverter_hpp
 
 #include <cl/tape/impl/doubleoperatorcheck.hpp>
 
 namespace cl
 {
-    namespace detail
+    namespace tapescript
     {
         // Returns constant ref value from TapeType
         template <typename TapeType>
@@ -48,7 +48,7 @@ namespace cl
             , typename IsSameType = typename std::is_same<NativeType, TapeDouble>::type
             , typename IsArithmetic = typename std::is_arithmetic<NativeType>::type
             , typename IsConvertible = typename std::is_convertible<Type, ValueType>::type
-            , typename IsHasOperator = typename cl::detail::is_has_operator_real<NativeType>::type
+            , typename IsHasOperator = typename cl::tapescript::is_has_operator_real<NativeType>::type
             , typename IsEnum = typename std::is_enum<NativeType>::type  >
     struct TapeDoubleConvert
     {
@@ -137,8 +137,8 @@ namespace cl
             // If we have const reference, non-constant operator cannot be used
             // and we should use the addition instance instead
             typedef typename
-                detail::if_c<
-                    cl::detail::is_has_operator_real<NativeType>::is_const
+                tapescript::if_c<
+                    cl::tapescript::is_has_operator_real<NativeType>::is_const
                     , Type const&
                     , Type >::type type;
             type v = other_value;
@@ -178,4 +178,4 @@ namespace cl
     };
 }
 
-#endif // __cl_tape_impl_doubleconverter_hpp__
+#endif // cl_tape_impl_doubleconverter_hpp

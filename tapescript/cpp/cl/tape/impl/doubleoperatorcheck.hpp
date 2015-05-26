@@ -20,8 +20,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __cl_tape_impl_doubleoperatorcheck_hpp__
-#define __cl_tape_impl_doubleoperatorcheck_hpp__
+#ifndef cl_tape_impl_doubleoperatorcheck_hpp
+#define cl_tape_impl_doubleoperatorcheck_hpp
 
 #if defined CL_TAPE_CPPAD
 #include <cppad/cppad.hpp>
@@ -51,7 +51,7 @@ namespace cl
     inline typename certain_type<T>::type
     get_instance();
 
-    namespace detail
+    namespace tapescript
     {
         struct dummy {};
 
@@ -121,12 +121,12 @@ namespace cl
         template <int >
         struct extract_int_dummy
         {
-            typedef detail::dummy type;
+            typedef tapescript::dummy type;
         };
     }
 
     // This approach to calculate is has type static const or enum ::value field
-    template <typename Type, typename Dummy = cl::detail::dummy>
+    template <typename Type, typename Dummy = cl::tapescript::dummy>
     struct has_value {
         enum { value = 0, solved_value = 0 };
         typedef std::false_type type;
@@ -134,7 +134,7 @@ namespace cl
 
     template <typename Type>
     struct has_value<Type
-            , typename cl::detail::extract_int_dummy<Type::value>::type >
+            , typename cl::tapescript::extract_int_dummy<Type::value>::type >
     {
         enum { value = 1, solved_value = Type::value };
         typedef std::true_type type;
@@ -153,7 +153,7 @@ namespace cl
 #endif
 
 
-    namespace detail
+    namespace tapescript
     {
         template <bool V, typename Then, typename Else>
         struct if_c;
@@ -188,4 +188,4 @@ namespace cl
     }
 }
 
-#endif // __cl_tape_impl_doubleoperatorcheck_hpp__
+#endif // cl_tape_impl_doubleoperatorcheck_hpp

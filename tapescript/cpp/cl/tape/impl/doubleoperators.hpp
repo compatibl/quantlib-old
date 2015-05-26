@@ -20,8 +20,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __cl_tape_impl_doubleoperators_hpp__
-#define __cl_tape_impl_doubleoperators_hpp__
+#ifndef cl_tape_impl_doubleoperators_hpp
+#define cl_tape_impl_doubleoperators_hpp
 
 #include <cl/tape/impl/double.hpp>
 
@@ -33,14 +33,16 @@ limitations under the License.
 //!! Certain tape double operators
 namespace cl
 {
-    namespace detail
+    namespace tapescript
     {
+        /// Take value from tape double 
         template <typename TapeType>
         inline typename TapeType::value_type const& cvalue(TapeType const& tv)
         {
             return tv.value_;
         }
 
+        /// Take const value from tape double 
         template <typename TapeType>
         inline typename TapeType::value_type& value(TapeType& tv)
         {
@@ -49,64 +51,64 @@ namespace cl
     }
 
     /// <summary>Returns the result of addition of two TapeDouble objects.</summary>
-    inline TapeDouble operator+(const TapeDouble& lhs, const TapeDouble& rhs) { return detail::cvalue(lhs) + detail::cvalue(rhs); }
+    inline TapeDouble operator+(const TapeDouble& lhs, const TapeDouble& rhs) { return cl::tapescript::cvalue(lhs) + cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns the result of subtraction of two TapeDouble objects.</summary>
-    inline TapeDouble operator-(const TapeDouble& lhs, const TapeDouble& rhs) { return detail::cvalue(lhs) - detail::cvalue(rhs); }
+    inline TapeDouble operator-(const TapeDouble& lhs, const TapeDouble& rhs) { return cl::tapescript::cvalue(lhs) - cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns the result of multiplication of two TapeDouble objects.</summary>
-    inline TapeDouble operator*(const TapeDouble& lhs, const TapeDouble& rhs) { return detail::cvalue(lhs) * detail::cvalue(rhs); }
+    inline TapeDouble operator*(const TapeDouble& lhs, const TapeDouble& rhs) { return cl::tapescript::cvalue(lhs) * cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns the result of division of two TapeDouble objects.</summary>
-    inline TapeDouble operator/(const TapeDouble& lhs, const TapeDouble& rhs) { return detail::cvalue(lhs) / detail::cvalue(rhs); }
+    inline TapeDouble operator/(const TapeDouble& lhs, const TapeDouble& rhs) { return cl::tapescript::cvalue(lhs) / cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns the result of addition of TapeDouble and double.</summary>
-    inline TapeDouble operator+(const TapeDouble& lhs, double rhs) { return detail::cvalue(lhs) + rhs; }
+    inline TapeDouble operator+(const TapeDouble& lhs, double rhs) { return cl::tapescript::cvalue(lhs) + rhs; }
 
     /// <summary>Returns the result of subtraction of TapeDouble and double.</summary>
-    inline TapeDouble operator-(const TapeDouble& lhs, double rhs) { return detail::cvalue(lhs) - rhs; }
+    inline TapeDouble operator-(const TapeDouble& lhs, double rhs) { return cl::tapescript::cvalue(lhs) - rhs; }
 
     /// <summary>Returns the result of multiplication of TapeDouble and double.</summary>
-    inline TapeDouble operator*(const TapeDouble& lhs, double rhs) { return detail::cvalue(lhs) * rhs; }
+    inline TapeDouble operator*(const TapeDouble& lhs, double rhs) { return cl::tapescript::cvalue(lhs) * rhs; }
 
     /// <summary>Returns the result of division of TapeDouble and double.</summary>
-    inline TapeDouble operator/(const TapeDouble& lhs, double rhs) { return detail::cvalue(lhs) / rhs; }
+    inline TapeDouble operator/(const TapeDouble& lhs, double rhs) { return cl::tapescript::cvalue(lhs) / rhs; }
 
     /// <summary>Returns the result of addition of double and TapeDouble.</summary>
-    inline TapeDouble operator+(double lhs, const TapeDouble& rhs) { return lhs + detail::cvalue(rhs); }
+    inline TapeDouble operator+(double lhs, const TapeDouble& rhs) { return lhs + cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns the result of subtraction of double and TapeDouble.</summary>
-    inline TapeDouble operator-(double lhs, const TapeDouble& rhs) { return lhs - detail::cvalue(rhs); }
+    inline TapeDouble operator-(double lhs, const TapeDouble& rhs) { return lhs - cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns the result of multiplication of double and TapeDouble.</summary>
-    inline TapeDouble operator*(double lhs, const TapeDouble& rhs) { return lhs * detail::cvalue(rhs); }
+    inline TapeDouble operator*(double lhs, const TapeDouble& rhs) { return lhs * cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns the result of division of double and TapeDouble.</summary>
-    inline TapeDouble operator/(double lhs, const TapeDouble& rhs) { return lhs / detail::cvalue(rhs); }
+    inline TapeDouble operator/(double lhs, const TapeDouble& rhs) { return lhs / cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns true if lhs is equal to rhs.</summary>
-    inline bool operator==(double lhs, const TapeDouble& rhs) { return lhs == detail::cvalue(rhs); }
+    inline bool operator==(double lhs, const TapeDouble& rhs) { return lhs == cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns true if lhs is not equal to rhs.</summary>
-    inline bool operator!=(double lhs, const TapeDouble& rhs) { return lhs != detail::cvalue(rhs); }
+    inline bool operator!=(double lhs, const TapeDouble& rhs) { return lhs != cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns true if lhs is less than rhs.</summary>
-    inline bool operator<(double lhs, const TapeDouble& rhs) { return lhs < detail::cvalue(rhs); }
+    inline bool operator<(double lhs, const TapeDouble& rhs) { return lhs < cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns true if lhs is less than or equal to rhs.</summary>
-    inline bool operator<=(double lhs, const TapeDouble& rhs) { return lhs <= detail::cvalue(rhs); }
+    inline bool operator<=(double lhs, const TapeDouble& rhs) { return lhs <= cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns true if lhs is more than rhs.</summary>
-    inline bool operator>(double lhs, const TapeDouble& rhs) { return lhs > detail::cvalue(rhs); }
+    inline bool operator>(double lhs, const TapeDouble& rhs) { return lhs > cl::tapescript::cvalue(rhs); }
 
     /// <summary>Returns true if lhs is more than or equal to rhs.</summary>
-    inline bool operator>=(double lhs, const TapeDouble& rhs) { return lhs >= detail::cvalue(rhs); }
+    inline bool operator>=(double lhs, const TapeDouble& rhs) { return lhs >= cl::tapescript::cvalue(rhs); }
 
     /// <summary>Serialize to stream.</summary>
-    inline std::ostream& operator<<(std::ostream& output, const TapeDouble& v) { output << detail::cvalue(v); return output; }
+    inline std::ostream& operator<<(std::ostream& output, const TapeDouble& v) { output << cl::tapescript::cvalue(v); return output; }
 
     /// <summary>Deserialize from stream.</summary>
-    inline std::istream& operator>>(std::istream& input, TapeDouble& v) { input >> detail::value(v); return input; }
+    inline std::istream& operator>>(std::istream& input, TapeDouble& v) { input >> cl::tapescript::value(v); return input; }
 
 }
 
@@ -127,14 +129,16 @@ namespace cl_ext
         typedef basic_operators type;
     };
 
+    /// Base template for operator override
     template <typename Left, typename Right, typename Operator
-        , typename left_convertible = typename cl::detail::is_has_operator_real<Left>::type
-        , typename right_convertible = typename cl::detail::is_has_operator_real<Right>::type
+        , typename left_convertible = typename cl::tapescript::is_has_operator_real<Left>::type
+        , typename right_convertible = typename cl::tapescript::is_has_operator_real<Right>::type
         , typename Custom = typename custom_operator<Left, Right>::type >
     struct operator_traits
     {
     };
 
+    /// Operator + for class which has conversion to double
     template <typename Left, typename Right>
     struct operator_traits<Left, Right, struct oper_plus, std::true_type, std::true_type, basic_operators>
     {
@@ -154,6 +158,7 @@ namespace cl_ext
         }
     };
 
+    /// Operator - for class which has conversion to double
     template <typename Left, typename Right>
     struct operator_traits<Left, Right, struct oper_minus, std::true_type, std::true_type, basic_operators>
     {
@@ -173,6 +178,7 @@ namespace cl_ext
         }
     };
 
+    /// Operator + for class which has conversion to double for right hand side argument
     template <typename Left, typename RC>
     struct operator_traits<Left, cl::TapeDouble, struct oper_plus, std::true_type, RC, basic_operators>
     {
@@ -192,6 +198,7 @@ namespace cl_ext
         }
     };
 
+    /// Operator + for class which has conversion to double for right hand side argument
     template <typename Right, typename LC>
     struct operator_traits<cl::TapeDouble, Right, struct oper_plus, LC, std::true_type, basic_operators>
     {
@@ -211,6 +218,7 @@ namespace cl_ext
         }
     };
 
+    /// Operator - for class which has conversion to double for left hand side argument
     template <typename Left, typename RC>
     struct operator_traits<Left, cl::TapeDouble, struct oper_minus, std::true_type, RC, basic_operators>
     {
@@ -230,6 +238,7 @@ namespace cl_ext
         }
     };
 
+    /// Operator - for class which has conversion to double for right hand side argument
     template <typename Right, typename LC>
     struct operator_traits<cl::TapeDouble, Right, struct oper_minus, LC, std::true_type, basic_operators>
     {
@@ -483,8 +492,8 @@ namespace boost_connectors
     };
 }
 
-namespace cl {
-
+namespace cl
+{
     template <typename Type
         , int DefaultValue
         , typename HasValue = cl::has_value<Type>::type >
@@ -691,4 +700,4 @@ namespace boost
     }
 }
 
-#endif  // __cl_tape_impl_doubleoperators_hpp__
+#endif  // cl_tape_impl_doubleoperators_hpp
