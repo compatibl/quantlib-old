@@ -66,7 +66,7 @@
 
 #if defined(CL_TAPE_NOAD) || defined(CL_TAPE_CPPAD) || defined(CL_TAPE_ADOLC)
 // Add (project root)/tapescript/cpp to the include path
-#   include <ad.hpp>
+#   include <ql/ad.hpp>
 #   define QL_REAL cl::TapeDouble
 #else
 // Standard QuantLib setting with Real defined as regular double

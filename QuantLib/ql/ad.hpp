@@ -30,7 +30,7 @@ namespace QuantLib
 {
     template <typename > class Null;
 
-    // Specialiation of Null template to make it work with non-native double
+    // Specialization of Null template to make it work with non-native double
     template <>
     class Null<cl::TapeDouble>
     {
