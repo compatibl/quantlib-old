@@ -82,9 +82,9 @@ namespace QuantLib {
     BetaRiskSimulation::BetaRiskSimulation(Date start, Date end, Real maxLoss, Real lambda, Real alpha, Real beta) 
               : CatSimulation(start, end), 
                 maxLoss_(maxLoss), 
-                exponential_(rng_, boost::exponential_distribution<>(lambda)),
-                gammaAlpha_(rng_, boost::gamma_distribution<>(alpha)),
-                gammaBeta_(rng_, boost::gamma_distribution<>(beta))
+                exponential_(rng_, boost::exponential_distribution<Real>(lambda)),
+                gammaAlpha_(rng_, boost::gamma_distribution<Real>(alpha)),
+                gammaBeta_(rng_, boost::gamma_distribution<Real>(beta))
     {
         ActualActual dayCounter;
         dayCount_ = dayCounter.dayCount(start, end);

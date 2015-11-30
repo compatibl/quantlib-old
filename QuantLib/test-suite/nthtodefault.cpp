@@ -358,8 +358,8 @@ void NthToDefaultTest::testGaussStudent() {
 
         Real diff = 1e4 * ntd[i].fairPremium() - hwDataDist[i].spread[0];
         maxDiff = max (maxDiff, fabs (diff));
-        BOOST_CHECK_MESSAGE (fabs(diff / hwDataDist[i].spread[0]) ||
-                             fabs(diff) < absTolerance,
+        BOOST_CHECK_MESSAGE ((double)fabs(diff / hwDataDist[i].spread[0]) ||
+                             (double)fabs(diff) < absTolerance,
                              "tolerance " << relTolerance << "|"
                              << absTolerance << " exceeded");
     }
@@ -372,8 +372,8 @@ void NthToDefaultTest::testGaussStudent() {
 
         Real diff = 1e4 * ntd[i].fairPremium() - hwDataDist[i].spread[3];
         maxDiff = max (maxDiff, fabs (diff));
-        BOOST_CHECK_MESSAGE (fabs(diff / hwDataDist[i].spread[3]) ||
-                             fabs(diff) < absTolerance,
+        BOOST_CHECK_MESSAGE((double)fabs(diff / hwDataDist[i].spread[3]) ||
+                            (double)fabs(diff) < absTolerance,
                              "tolerance " << relTolerance << "|"
                              << absTolerance << " exceeded");
     }

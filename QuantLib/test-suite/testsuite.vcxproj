@@ -217,6 +217,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -445,6 +446,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -716,6 +718,7 @@
     <ClCompile Include="money.cpp" />
     <ClCompile Include="noarbsabr.cpp" />
     <ClCompile Include="nthtodefault.cpp" />
+    <ClCompile Include="numericaldifferentiation.cpp" />
     <ClCompile Include="ode.cpp" />
     <ClCompile Include="operators.cpp" />
     <ClCompile Include="optimizers.cpp" />
@@ -852,6 +855,7 @@
     <ClInclude Include="money.hpp" />
     <ClInclude Include="noarbsabr.hpp" />
     <ClInclude Include="nthtodefault.hpp" />
+    <ClInclude Include="numericaldifferentiation.hpp" />
     <ClInclude Include="ode.hpp" />
     <ClInclude Include="operators.hpp" />
     <ClInclude Include="optimizers.hpp" />

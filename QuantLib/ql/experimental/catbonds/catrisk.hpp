@@ -109,9 +109,9 @@ namespace QuantLib {
         Real yearFraction_;
     
         boost::mt19937 rng_;
-        boost::variate_generator<boost::mt19937&, boost::exponential_distribution<> > exponential_;
-        boost::variate_generator<boost::mt19937&, boost::gamma_distribution<> > gammaAlpha_;
-        boost::variate_generator<boost::mt19937&, boost::gamma_distribution<> > gammaBeta_;
+        boost::variate_generator<boost::mt19937&, boost::exponential_distribution<Real> > exponential_;
+        boost::variate_generator<boost::mt19937&, boost::gamma_distribution<Real> > gammaAlpha_;
+        boost::variate_generator<boost::mt19937&, boost::gamma_distribution<Real> > gammaBeta_;
     };
 
     class BetaRisk : public CatRisk {

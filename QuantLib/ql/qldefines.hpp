@@ -1,8 +1,9 @@
-/* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+﻿/* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
  Copyright (C) 2000, 2001, 2002, 2003 RiskMap srl
  Copyright (C) 2003, 2004, 2005, 2006, 2007 StatPro Italia srl
+ Copyright (C) 2015 CompatibL
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -67,7 +68,7 @@
 #if defined(CL_TAPE_NOAD) || defined(CL_TAPE_CPPAD) || defined(CL_TAPE_ADOLC)
 // Add (project root)/tapescript/cpp to the include path
 #   include <ql/ad.hpp>
-#   define QL_REAL cl::TapeDouble
+#   define QL_REAL cl::tape_wrapper<double>
 #else
 // Standard QuantLib setting with Real defined as regular double
 #   define QL_REAL double

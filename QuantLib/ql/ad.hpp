@@ -1,7 +1,7 @@
 ﻿/* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
- Copyright (C) 2003-Present CompatibL
+ Copyright (C) 2015 CompatibL
 
  This file is part of QuantLib, a free-software/open-source library
  for financial quantitative analysts and developers - http://quantlib.org/
@@ -22,8 +22,11 @@
 
 namespace QuantLib {}
 
+// Namespace of the library from which TapeDouble is invoked
+// Used only if a separate flag is set to avoid operators in global scope
 #define cl_ext QuantLib
 
+// Class replacing the native double (TapeDouble) and its dependencies
 #include <cl/tape/tape.hpp>
 
 namespace QuantLib
@@ -31,19 +34,19 @@ namespace QuantLib
     template <typename > class Null;
 
     // Specialization of Null template to make it work with non-native double
-    template <>
-    class Null<cl::TapeDouble>
+    template <typename Base>
+    class Null<cl::tape_wrapper<Base>>
     {
     public:
         Null() {}
-        cl::TapeDouble operator -()
+        cl::tape_wrapper<Base> operator -()
         {
             return -std::numeric_limits<double>::max();
         }
 
-        inline operator cl::TapeDouble()
+        inline operator cl::tape_wrapper<Base>()
         {
-            return cl::TapeDouble(std::numeric_limits<double>::max());
+            return cl::tape_wrapper<Base>(std::numeric_limits<double>::max());
         }
     };
 }

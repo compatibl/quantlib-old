@@ -190,7 +190,7 @@ namespace QuantLib {
             DayCounter dc;
             Rate result = 0.0;
             for (; first<last && (*first)->date()==paymentDate; ++first) {
-                shared_ptr<Coupon> cp = dynamic_pointer_cast<Coupon>(*first);
+                boost::shared_ptr<Coupon> cp = dynamic_pointer_cast<Coupon>(*first);
                 if (cp) {
                     if (firstCouponFound) {
                         QL_REQUIRE(nominal       == cp->nominal() &&
