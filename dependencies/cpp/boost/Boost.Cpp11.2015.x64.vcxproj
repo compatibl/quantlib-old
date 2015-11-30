@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -40,45 +40,24 @@
     <ClCompile Include="test\impl\**\*.ipp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="archive\impl\archive_serializer_map.ipp" />
-    <None Include="archive\impl\basic_binary_iarchive.ipp" />
-    <None Include="archive\impl\basic_binary_iprimitive.ipp" />
-    <None Include="archive\impl\basic_binary_oarchive.ipp" />
-    <None Include="archive\impl\basic_binary_oprimitive.ipp" />
-    <None Include="archive\impl\basic_text_iarchive.ipp" />
-    <None Include="archive\impl\basic_text_iprimitive.ipp" />
-    <None Include="archive\impl\basic_text_oarchive.ipp" />
-    <None Include="archive\impl\basic_text_oprimitive.ipp" />
-    <None Include="archive\impl\basic_xml_iarchive.ipp" />
-    <None Include="archive\impl\basic_xml_oarchive.ipp" />
     <None Include="archive\impl\src\basic_xml_grammar.ipp" />
-    <None Include="archive\impl\text_iarchive_impl.ipp" />
-    <None Include="archive\impl\text_oarchive_impl.ipp" />
-    <None Include="archive\impl\text_wiarchive_impl.ipp" />
-    <None Include="archive\impl\text_woarchive_impl.ipp" />
-    <None Include="archive\impl\xml_iarchive_impl.ipp" />
-    <None Include="archive\impl\xml_oarchive_impl.ipp" />
-    <None Include="archive\impl\xml_wiarchive_impl.ipp" />
-    <None Include="archive\impl\xml_woarchive_impl.ipp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="archive\impl\basic_xml_grammar.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{05FCBA2D-EBAF-4265-94E6-CB33526C758F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -94,13 +73,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\..\..\bin\vc120-x64-debug\</OutDir>
-    <TargetName>libboost_unit_test_framework-vc120-mt-gd-1_57</TargetName>
+    <OutDir>$(SolutionDir)\..\bin\vc140-x64-debug\</OutDir>
+    <TargetName>libboost_unit_test_framework-vc140-mt-gd-1_57</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\..\..\bin\vc120-x64-release\</OutDir>
-    <TargetName>libboost_unit_test_framework-vc120-mt-1_57</TargetName>
+    <OutDir>$(SolutionDir)\..\bin\vc140-x64-release\</OutDir>
+    <TargetName>libboost_unit_test_framework-vc140-mt-1_57</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
