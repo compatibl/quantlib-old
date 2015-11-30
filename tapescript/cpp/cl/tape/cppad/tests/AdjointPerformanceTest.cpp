@@ -61,8 +61,8 @@ void adjointPerformanceTest()
         out << "Number of independent variables: " << n << std::endl;
         out << "Number of dependent variables: 1" << std::endl;
 
-        TapeDoubleVector X(n, 2);
-        TapeDoubleVector Y(1);
+        tape_double_vector X(n, 2);
+        tape_double_vector Y(1);
         boost::timer timer;
 
         // Start timing of tape recording.
@@ -74,10 +74,10 @@ void adjointPerformanceTest()
         out << "Start of tape recording: " << currentTime() << std::endl;
 
         // Calculate functions.
-        Y[0] = calculate<TapeDouble>(X);
+        Y[0] = calculate<tape_double>(X);
 
         // End of tape recording. Declare vector Y as dependent variable.
-        TapeFunction<double> f(X, Y);
+        tape_function<double> f(X, Y);
 
         // Calculate time for tape recording.
         double tapeRecordingTime = timer.elapsed();
@@ -223,7 +223,7 @@ void jacobianPerformanceTest()
     }
 
     // Create vector of independent variables.
-    TapeDoubleVector X(sizeof_indep);
+    tape_double_vector X(sizeof_indep);
     for (int i = 0; i < sizeof_indep; i++)
     {
         X[i] = xd[i];
@@ -238,7 +238,7 @@ void jacobianPerformanceTest()
     out << "Start of tape recording: " << currentTime() << std::endl;
 
     // Create vector of dependent variables.
-    TapeDoubleVector Y(sizeof_dep, 0);
+    tape_double_vector Y(sizeof_dep, 0);
 
     // Calculate functions.
     for (int i = 0; i < sizeof_indep; i++)
@@ -248,7 +248,7 @@ void jacobianPerformanceTest()
     }
 
     // End of tape recording. Declare vector Y as dependent variable.
-    TapeFunction<double> f(X, Y);
+    tape_function<double> f(X, Y);
 
     double temp_t = timer.elapsed();
     std::cout << "\tTime for tape recording : " << temp_t << " s" << std::endl;

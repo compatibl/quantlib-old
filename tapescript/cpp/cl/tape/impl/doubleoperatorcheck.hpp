@@ -24,15 +24,15 @@ limitations under the License.
 #define cl_tape_impl_doubleoperatorcheck_hpp
 
 #if defined CL_TAPE_CPPAD
-#include <cppad/cppad.hpp>
+//#  include <cppad/cppad.hpp>
 #endif
+
+#include <cl/tape/impl/std_fwd.hpp>
 
 //!! Supporting code for double operators, in progress
 
 namespace cl
 {
-    class TapeDouble;
-
     struct empty_type {};
 
     template <typename T>
@@ -75,7 +75,7 @@ namespace cl
         };
 
         // Typedef is not visible outside the detail namespace
-        typedef cl::TapeDouble double_type;
+        typedef cl::tape_double double_type;
 
         template <typename Type, typename V = dummy>
         struct is_has_operator_real
@@ -84,7 +84,7 @@ namespace cl
             typedef std::integral_constant<bool, value > type;
         };
 
-        typedef cl::TapeDouble double_type;
+        typedef cl::tape_double double_type;
 
         // This is partial specialization of SFINAE
         // when we have a operator to convert to Double
@@ -125,7 +125,7 @@ namespace cl
         };
     }
 
-    // This approach to calculate is has type static const or enum ::value field
+    // This approach to calculate has type static const or enum ::value field
     template <typename Type, typename Dummy = cl::tapescript::dummy>
     struct has_value {
         enum { value = 0, solved_value = 0 };
@@ -183,8 +183,8 @@ namespace cl
     template <typename _AD_type>
     inline void CheckParameter(_AD_type& x)
     {
-        if (ext::Parameter(x))
-            cl::throw_("Can't be parameter");
+        if (ext::Variable(x))
+            cl::throw_("Can't be variable");
     }
 }
 

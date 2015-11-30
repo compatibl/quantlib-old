@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright (C) 2003-2015 CompatibL
 
 This file is part of TapeScript, an open source library and tape encoding
@@ -20,9 +20,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <boost/test/unit_test.hpp>
+#ifndef cl_tape_examples_impl_adapter_performance_test_hpp
+#define cl_tape_examples_impl_adapter_performance_test_hpp
 
-int test_main(int, char** const args)
+namespace cl
 {
-    return 0;
+    void adapter_performance_test();
 }
+
+#endif // cl_tape_examples_impl_adapter_performance_test_hpp
