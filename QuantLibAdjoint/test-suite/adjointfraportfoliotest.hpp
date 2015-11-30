@@ -18,8 +18,8 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_fra_portfolio_hpp
-#define ad_fra_portfolio_hpp
+#ifndef cl_adjoint_fra_portfolio_hpp
+#define cl_adjoint_fra_portfolio_hpp
 
 #include <boost/test/unit_test.hpp>
 

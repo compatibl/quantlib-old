@@ -21,8 +21,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_market_model_calibration_hpp
-#define ad_market_model_calibration_hpp
+#ifndef cl_adjoint_market_model_calibration_hpp
+#define cl_adjoint_market_model_calibration_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 #include <ql/ad.hpp>
@@ -31,11 +32,8 @@ FOR A PARTICULAR PURPOSE.  See the license for more details.
 class AdjointMarketModelCalibrationTest
 {
 public:
-    static std::vector<QuantLib::Real> calibrationErrors(const std::vector<QuantLib::Volatility>& capletVol);
-    static bool testFunction();
-    static QuantLib::Real findCapletRmsError(std::vector<QuantLib::Rate>& todaysForwards_, std::vector<cl::TapeDouble>& mktCapletVols, std::vector<QuantLib::Real>& h);
-    static bool testCapletCalibration();
+    static bool testCapletVolatilities();
     static boost::unit_test_framework::test_suite* suite();
 };
 
-#endif 
+#endif

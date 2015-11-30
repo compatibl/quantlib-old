@@ -15,8 +15,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef quantlib_utilities_adjoint_hpp
-#define quantlib_utilities_adjoint_hpp
+#ifndef cl_utilities_adjoint_hpp
+#define cl_utilities_adjoint_hpp
+#pragma once
 
 #include <ql/math/matrix.hpp>
 #include <boost/timer.hpp>
@@ -218,7 +219,7 @@ namespace QuantLib
 
 
     // computes gradient in Forward AD mode and outputs results
-    inline double gradForward(cl::TapeFunction<double>& f,
+    inline double gradForward(cl::tape_function<double>& f,
         std::vector<double>& grad,
         bool timeOutput,
         bool gradOutput)
@@ -260,7 +261,7 @@ namespace QuantLib
 
 
     // computes gradient in Reverse AD mode and outputs results
-    inline double gradReverse(cl::TapeFunction<double>& f,
+    inline double gradReverse(cl::tape_function<double>& f,
         std::vector<double>& grad,
         bool timeOutput,
         bool gradOutput)
@@ -298,9 +299,9 @@ namespace QuantLib
     }
 
     // computes gradient in Forward AD mode and outputs results
-    inline double gradForward(cl::TapeFunction<double>& f,
+    inline double gradForward(cl::tape_function<double>& f,
         std::vector<double>& grad,
-        cl::AdjointTestOutput& out,
+        cl::tape_empty_test_output& out,
         bool timeOutput,
         bool gradOutput,
         size_t iterNum = 10)
@@ -341,7 +342,7 @@ namespace QuantLib
                     cout << "dy" << i / n << "/dx" << i % n << "= " << grad[i] << endl;
             }
             out.log() << "Forward Mode Derivatives calculated successfully" << std::endl;
-            out.log() << "Time in Forward mode:   " << timeForward << "s"<< endl;
+            out.log() << "Time in Forward mode:   " << timeForward << "s" << endl;
 
             return timeForward;
         }
@@ -354,9 +355,9 @@ namespace QuantLib
 
 
     // computes gradient in Reverse AD mode and outputs results
-    inline double gradReverse(cl::TapeFunction<double>& f,
+    inline double gradReverse(cl::tape_function<double>& f,
         std::vector<double>& grad,
-        cl::AdjointTestOutput& out,
+        cl::tape_empty_test_output& out,
         bool timeOutput,
         bool gradOutput,
         size_t iterNum = 10)
@@ -395,7 +396,7 @@ namespace QuantLib
             }
 
             out.log() << "Reverse Mode Derivatives calculated successfully" << std::endl;
-            out.log() << "Time in Reverse mode:   " << timeReverse <<" s"<< endl;
+            out.log() << "Time in Reverse mode:   " << timeReverse << " s" << endl;
 
             return timeReverse;
         }
@@ -416,9 +417,9 @@ namespace QuantLib
         return A;
     }
 
-    inline std::vector<cl::TapeDouble>  matrix2vector(const Matrix& A)
+    inline std::vector<cl::tape_double>  matrix2vector(const Matrix& A)
     {
-        return std::vector<cl::TapeDouble>(A.begin(), A.end());
+        return std::vector<cl::tape_double>(A.begin(), A.end());
     }
 
 
@@ -471,11 +472,16 @@ namespace QuantLib
         upTo(what, PerformanceTime{ where, where, where, 0 });
     }
 
+    inline void upTo(double & what, double const& where)
+    {
+        what = std::max(what, where);
+    }
+
     // Dummy realization of heat equation.
     template <class RanIt>
     void heatbackward(RanIt first, RanIt last, double a, size_t n = 1)
     {
-        if (first - last < 3)
+        if (last - first < 3)
             return;
 
         for (size_t i = 0; i < n; i++)
@@ -486,21 +492,56 @@ namespace QuantLib
             for (; next != std::reverse_iterator<RanIt>(first); ++curr, ++next, ++prev)
             {
                 typename RanIt::value_type deriv = *next + *prev - 2 * (*curr);
-                *curr += 0.33 * a * deriv;
-                *prev -= 0.165 * a * deriv;
-                *next -= 0.165 * a * deriv;
-                //upTo(*next, 0);
+                *curr += 0.5 * a * deriv;
+                *prev -= 0.25 * a * deriv;
+                *next -= 0.25 * a * deriv;
+                upTo(*next, 0);
             }
-            //upTo(*curr, 0.5 * (*prev));
+            upTo(*curr, 0.5 * (*prev));
+        }
+    }
+
+    template <class RanIt>
+    void heat2(RanIt first, RanIt last, double a, size_t n = 1)
+    {
+        size_t size = last - first;
+        if (size < 3)
+            return;
+
+        typedef typename RanIt::value_type value_type;
+        value_type left = *first;
+        value_type right = *(last - 1);
+        value_type sum = std::accumulate(first + 1, last, *first);
+        for (size_t i = 0; i < n; i++)
+        {
+            std::vector<value_type> derivatives(size);
+            RanIt prev = first;
+            RanIt curr = prev + 1;
+            RanIt next = curr + 1;
+            derivatives[0] = *curr + left - 2 * (*first);
+            for (auto deriv = derivatives.begin() + 1; deriv != derivatives.end() - 1; ++deriv, ++curr, ++next, ++prev)
+            {
+                *deriv = *next + *prev - 2 * (*curr);
+            }
+            derivatives.back() = right + *prev - 2 * (*curr);
+            auto deriv = derivatives.begin();
+            std::for_each(first, last, [&deriv, a](value_type& v)
+            {
+                v += 0.5 * a * (*deriv++);
+            });
         }
     }
 
     template <class RanIt>
     inline void makeSmooth(RanIt first, RanIt last, double sigma = 10.0)
     {
-        size_t n = size_t(sigma*sigma * 10) + 1;
+        if (sigma <= 0)
+            return;
+
+        size_t n = size_t(sigma*sigma * 10 + sigma * 50) + 1;
         double a = sigma*sigma / n;
         heatbackward(first, last, a, n);
+        //heat2(first, last, a, n);
     }
 
     // Makes data in c smooth.
@@ -508,6 +549,50 @@ namespace QuantLib
     inline void makeSmooth(Cont& c, double sigma = 10.0)
     {
         makeSmooth(c.begin(), c.end(), sigma);
+    }
+
+    template <template<typename T, typename A = std::allocator<T> > class Cont>
+    inline void makeSmooth(Cont<std::string>& c, const std::string& sigma)
+    {
+        std::vector<double> v(c.size());
+        std::transform(c.begin(), c.end(), v.begin(),
+            [](std::string const& s)
+        {
+            return std::stod(s);
+        });
+
+        if (sigma == "default")
+        {
+            makeSmooth(v, c.size() * 0.05 + 5);
+        }
+        else
+        {
+            makeSmooth(v, std::stod(sigma));
+        }
+
+        std::transform(v.begin(), v.end(), c.begin(), [](double v)
+        {
+            std::ostringstream strs;
+            strs << v;
+            return strs.str();
+        });
+    }
+
+    template <class Key, class Cont, class Pr>
+    inline void makeSmooth(std::map<Key, Cont>& graphics, const std::string& sigma, Pr pred)
+    {
+        std::for_each(graphics.begin(), graphics.end(),
+            [&pred, &sigma](std::pair<const Key, Cont>& v)
+        {
+            if (pred(v.first))
+                makeSmooth(v.second, sigma);
+        });
+    }
+
+    template <class Key, class Cont>
+    inline void makeSmooth(std::map<Key, Cont>& graphics, const std::string& sigma)
+    {
+        makeSmooth(graphics, sigma, [](const std::string&){ return true; });
     }
 }
 

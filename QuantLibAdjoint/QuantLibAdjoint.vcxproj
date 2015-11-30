@@ -1,16 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug (static runtime)|x64">
-      <Configuration>Debug (static runtime)</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release (static runtime)|x64">
-      <Configuration>Release (static runtime)</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
@@ -25,16 +17,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="QuantLibAdjoint.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (static runtime)|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseOfMfc>false</UseOfMfc>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (static runtime)|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseOfMfc>false</UseOfMfc>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
@@ -48,12 +30,6 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (static runtime)|x64'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (static runtime)|x64'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -63,17 +39,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>11.0.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\lib\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\bin\vc120-x64-release</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\lib\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\bin\vc120-x64-debug</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (static runtime)|x64'">.\lib\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (static runtime)|x64'">.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug (static runtime)|x64'">.\lib\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug (static runtime)|x64'">.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug (static runtime)|x64'">QuantLib-$(qlCompilerTag)-x64-mt-sgd</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QuantLib-$(qlCompilerTag)-x64-mt-gd</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (static runtime)|x64'">QuantLib-$(qlCompilerTag)-x64-mt-s</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QuantLib-$(qlCompilerTag)-x64-mt</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -83,7 +53,7 @@
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>../QuantLib;../tapescript/cpp;../dependencies/cpp;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>CL_TAPE;CL_TAPE_CPPAD;CL_TAPE_CAN_GET_VALUE;NDEBUG;WIN32;_LIB;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CL_TAPE_COMPLEX_ENABLED;CL_TAPE;CL_TAPE_CPPAD;CL_TAPE_CAN_GET_VALUE;NDEBUG;WIN32;_LIB;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -103,7 +73,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <CompileAs>Default</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4800;4244;4267</DisableSpecificWarnings>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -126,7 +96,7 @@
       <Optimization>Disabled</Optimization>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <AdditionalIncludeDirectories>../QuantLib;../tapescript/cpp;../dependencies/cpp;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>CL_TAPE;CL_TAPE_CPPAD;CL_TAPE_CAN_GET_VALUE;_DEBUG;WIN32;_LIB;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CL_TAPE_COMPLEX_ENABLED;CL_TAPE;CL_TAPE_CPPAD;CL_TAPE_CAN_GET_VALUE;_DEBUG;WIN32;_LIB;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
@@ -147,92 +117,6 @@
       <CompileAs>Default</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DisableSpecificWarnings>4800;4244</DisableSpecificWarnings>
-    </ClCompile>
-    <ResourceCompile>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <Culture>0x0409</Culture>
-    </ResourceCompile>
-    <PreLinkEvent>
-      <Message>Make build directory</Message>
-      <Command>if not exist lib mkdir lib</Command>
-    </PreLinkEvent>
-    <Lib>
-      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-    </Lib>
-    <Bscmake>
-      <SuppressStartupBanner>false</SuppressStartupBanner>
-    </Bscmake>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (static runtime)|x64'">
-    <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../QuantLib;../tapescript/cpp;../dependencies/cpp;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_LIB;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <PrecompiledHeaderOutputFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\QuantLib.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</AssemblerListingLocation>
-      <ObjectFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</ObjectFileName>
-      <ProgramDataBaseFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</ProgramDataBaseFileName>
-      <BrowseInformation>
-      </BrowseInformation>
-      <BrowseInformationFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</BrowseInformationFile>
-      <WarningLevel>Level3</WarningLevel>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <CompileAs>Default</CompileAs>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-    </ClCompile>
-    <ResourceCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <Culture>0x0409</Culture>
-    </ResourceCompile>
-    <PreLinkEvent>
-      <Message>Make build directory</Message>
-      <Command>if not exist lib mkdir lib</Command>
-    </PreLinkEvent>
-    <Lib>
-      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-    </Lib>
-    <Bscmake>
-      <SuppressStartupBanner>false</SuppressStartupBanner>
-    </Bscmake>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (static runtime)|x64'">
-    <ClCompile>
-      <Optimization>Disabled</Optimization>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../QuantLib;../tapescript/cpp;../dependencies/cpp;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_LIB;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <PrecompiledHeaderOutputFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\QuantLib.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</AssemblerListingLocation>
-      <ObjectFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</ObjectFileName>
-      <ProgramDataBaseFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</ProgramDataBaseFileName>
-      <BrowseInformation>
-      </BrowseInformation>
-      <BrowseInformationFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</BrowseInformationFile>
-      <WarningLevel>Level3</WarningLevel>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <CompileAs>Default</CompileAs>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -290,6 +174,7 @@
     <ClInclude Include="..\QuantLib\ql\instruments\cpicapfloor.hpp" />
     <ClInclude Include="..\QuantLib\ql\instruments\cpiswap.hpp" />
     <ClInclude Include="..\QuantLib\ql\instruments\dividendbarrieroption.hpp" />
+    <ClInclude Include="..\QuantLib\ql\instruments\futures.hpp" />
     <ClInclude Include="..\QuantLib\ql\instruments\vanillastorageoption.hpp" />
     <ClInclude Include="..\QuantLib\ql\instruments\vanillaswingoption.hpp" />
     <ClInclude Include="..\QuantLib\ql\math\matrixutilities\bicgstab.hpp" />
@@ -893,6 +778,7 @@
     <ClInclude Include="..\QuantLib\ql\termstructures\volatility\sabrsmilesection.hpp" />
     <ClInclude Include="..\QuantLib\ql\termstructures\volatility\smilesection.hpp" />
     <ClInclude Include="..\QuantLib\ql\termstructures\volatility\spreadedsmilesection.hpp" />
+    <ClInclude Include="..\QuantLib\ql\termstructures\volatility\volatilitytype.hpp" />
     <ClInclude Include="..\QuantLib\ql\termstructures\volatility\capfloor\all.hpp" />
     <ClInclude Include="..\QuantLib\ql\termstructures\volatility\capfloor\capfloortermvolatilitystructure.hpp" />
     <ClInclude Include="..\QuantLib\ql\termstructures\volatility\capfloor\capfloortermvolcurve.hpp" />
@@ -973,6 +859,7 @@
     <ClInclude Include="..\QuantLib\ql\termstructures\credit\piecewisedefaultcurve.hpp" />
     <ClInclude Include="..\QuantLib\ql\termstructures\credit\probabilitytraits.hpp" />
     <ClInclude Include="..\QuantLib\ql\termstructures\credit\survivalprobabilitystructure.hpp" />
+    <ClInclude Include="..\QuantLib\ql\time\asx.hpp" />
     <ClInclude Include="..\QuantLib\ql\utilities\all.hpp" />
     <ClInclude Include="..\QuantLib\ql\utilities\clone.hpp" />
     <ClInclude Include="..\QuantLib\ql\utilities\dataformatters.hpp" />
@@ -1448,6 +1335,7 @@
     <ClInclude Include="..\QuantLib\ql\experimental\math\latentmodel.hpp" />
     <ClInclude Include="..\QuantLib\ql\experimental\math\multidimintegrator.hpp" />
     <ClInclude Include="..\QuantLib\ql\experimental\math\multidimquadrature.hpp" />
+    <ClInclude Include="..\QuantLib\ql\experimental\math\numericaldifferentiation.hpp" />
     <ClInclude Include="..\QuantLib\ql\experimental\math\polarstudenttrng.hpp" />
     <ClInclude Include="..\QuantLib\ql\math\optimization\simulatedannealing.hpp" />
     <ClInclude Include="..\QuantLib\ql\experimental\math\tcopulapolicy.hpp" />
@@ -1526,6 +1414,7 @@
     <ClCompile Include="..\QuantLib\ql\instruments\cpicapfloor.cpp" />
     <ClCompile Include="..\QuantLib\ql\instruments\cpiswap.cpp" />
     <ClCompile Include="..\QuantLib\ql\instruments\dividendbarrieroption.cpp" />
+    <ClCompile Include="..\QuantLib\ql\instruments\futures.cpp" />
     <ClCompile Include="..\QuantLib\ql\instruments\vanillaswingoption.cpp" />
     <ClCompile Include="..\QuantLib\ql\math\matrixutilities\bicgstab.cpp" />
     <ClCompile Include="..\QuantLib\ql\math\matrixutilities\sparseilupreconditioner.cpp" />
@@ -1957,6 +1846,7 @@
     <ClCompile Include="..\QuantLib\ql\termstructures\credit\flathazardrate.cpp" />
     <ClCompile Include="..\QuantLib\ql\termstructures\credit\hazardratestructure.cpp" />
     <ClCompile Include="..\QuantLib\ql\termstructures\credit\survivalprobabilitystructure.cpp" />
+    <ClCompile Include="..\QuantLib\ql\time\asx.cpp" />
     <ClCompile Include="..\QuantLib\ql\utilities\dataformatters.cpp" />
     <ClCompile Include="..\QuantLib\ql\utilities\dataparsers.cpp" />
     <ClCompile Include="..\QuantLib\ql\utilities\tracing.cpp" />
@@ -2296,6 +2186,7 @@
     <ClCompile Include="..\QuantLib\ql\experimental\math\gaussiancopulapolicy.cpp" />
     <ClCompile Include="..\QuantLib\ql\experimental\math\multidimintegrator.cpp" />
     <ClCompile Include="..\QuantLib\ql\experimental\math\multidimquadrature.cpp" />
+    <ClCompile Include="..\QuantLib\ql\experimental\math\numericaldifferentiation.cpp" />
     <ClCompile Include="..\QuantLib\ql\experimental\math\tcopulapolicy.cpp" />
     <ClCompile Include="..\QuantLib\ql\experimental\math\zigguratrng.cpp" />
     <ClCompile Include="..\QuantLib\ql\cashflow.cpp" />

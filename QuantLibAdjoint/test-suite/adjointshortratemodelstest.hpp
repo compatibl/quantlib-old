@@ -22,8 +22,8 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_hull_white_calibration_hpp
-#define ad_hull_white_calibration_hpp
+#ifndef cl_adjoint_hull_white_calibration_hpp
+#define cl_adjoint_hull_white_calibration_hpp
 
 #include <boost/test/unit_test.hpp>
 

@@ -1,7 +1,7 @@
 /* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
-Copyright (C) 2005, 2006, 2007, 2008, 2009 StatPro Italia srl
+Copyright (C) 2005, 2006, 2008, 2009 StatPro Italia srl
 Copyright (C) 2015 CompatibL
 
 This file is part of QuantLib, a free-software/open-source library
@@ -18,8 +18,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_piecewise_yield_curve_hpp
-#define ad_piecewise_yield_curve_hpp
+#ifndef cl_adjoint_piecewise_yield_curve_hpp
+#define cl_adjoint_piecewise_yield_curve_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 #include <ql/ad.hpp>

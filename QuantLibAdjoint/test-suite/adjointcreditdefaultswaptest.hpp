@@ -18,8 +18,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_credit_default_swap_hpp
-#define ad_credit_default_swap_hpp
+#ifndef cl_adjoint_credit_default_swap_hpp
+#define cl_adjoint_credit_default_swap_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 
@@ -28,8 +29,7 @@ class AdjointCreditDefaultSwapTest
 public:
     static bool testDefaultProbabilities();
     static bool testDiscountFactor();
-    static bool testHazardRate();
-    static bool testNotionalSpredRate();
+    static bool testNotionalSpreadRate();
     static boost::unit_test_framework::test_suite* suite();
 };
 

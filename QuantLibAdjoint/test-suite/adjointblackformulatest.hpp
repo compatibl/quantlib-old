@@ -19,8 +19,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_blackformula_hpp
-#define ad_blackformula_hpp
+#ifndef cl_adjoint_blackformula_hpp
+#define cl_adjoint_blackformula_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 #include <ql/math/copulas/alimikhailhaqcopula.hpp>
@@ -31,13 +32,9 @@ using namespace QuantLib;
 class AdjointBlackFormulaTest
 {
 public:
-    static bool testBachelierImpliedVolStrike();
-    static bool testBachelierImpliedVolD();
-    static bool testBachelierImpliedVolForward();
-    static bool testBachelierImpliedVolTte();
+    static bool testBachelierImpliedVolMoneyness();
+    static bool testBachelierImpliedVolMaturityTime();
     static bool testBachelierImpliedVolStdDev();
-    static bool testBachelierImpliedVolDiscount();
-    static bool testBachelierImpliedVolBpVol();
     static boost::unit_test_framework::test_suite* suite();
 };
 

@@ -18,8 +18,8 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_curve_fitting_hpp
-#define ad_curve_fitting_hpp
+#ifndef cl_adjoint_curve_fitting_hpp
+#define cl_adjoint_curve_fitting_hpp
 
 #include <boost/test/unit_test.hpp>
 

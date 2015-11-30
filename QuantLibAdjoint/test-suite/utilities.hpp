@@ -18,8 +18,9 @@
  FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef quantlib_test_utilities_hpp
-#define quantlib_test_utilities_hpp
+#ifndef cl_test_utilities_hpp
+#define cl_test_utilities_hpp
+#pragma once
 
 #include <ql/instruments/payoffs.hpp>
 #include <ql/exercise.hpp>
@@ -37,7 +38,7 @@
 #include <iomanip>
 
 #if defined CL_TAPE_CPPAD
-#   include "AdjointTestOutput.hpp"
+#   include <cl/tape/util/testoutput.hpp>
 #endif
 
 

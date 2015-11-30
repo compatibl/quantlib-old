@@ -17,8 +17,8 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_greek_hpp
-#define ad_greek_hpp
+#ifndef cl_adjoint_greek_hpp
+#define cl_adjoint_greek_hpp
 
 #include <boost/test/unit_test.hpp>
 

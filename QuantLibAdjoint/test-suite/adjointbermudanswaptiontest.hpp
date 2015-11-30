@@ -1,7 +1,7 @@
 /* based on test-suite\bermudanswaption.hpp */
 
 /*
-Copyright (C) 2005 StatPro Italia srl
+Copyright (C) 2005, 2007 StatPro Italia srl
 Copyright (C) 2015 CompatibL
 
 This file is part of QuantLib, a free-software/open-source library
@@ -20,6 +20,7 @@ FOR A PARTICULAR PURPOSE.  See the license for more details.
 
 #ifndef quantlib_test_ad_bermudan_swaption_hpp
 #define quantlib_test_ad_bermudan_swaption_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 

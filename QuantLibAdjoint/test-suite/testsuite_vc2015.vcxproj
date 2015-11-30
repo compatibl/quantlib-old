@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>testsuite</ProjectName>
+    <ProjectGuid>{A613045C-34AF-4706-AA3C-730C92524F74}</ProjectGuid>
+    <RootNamespace>testsuite</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="..\QuantLibAdjoint.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</EmbedManifest>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</EmbedManifest>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</PostBuildEventUseInBuild>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AD-QuantLib-test-suite-$(qlCompilerTag)-x64-mt</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AD-QuantLib-test-suite-$(qlCompilerTag)-x64-mt-gd</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TypeLibraryName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\testsuite.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../QuantLib;../../tapescript/cpp;../../dependencies/cpp;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CL_TAPE_COMPLEX_ENABLED;CL_TAPE;CL_TAPE_CPPAD;CL_TAPE_CAN_GET_VALUE;_DEBUG;WIN32;_CONSOLE;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\testsuite.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</AssemblerListingLocation>
+      <ObjectFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</ObjectFileName>
+      <ProgramDataBaseFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</ProgramDataBaseFileName>
+      <BrowseInformation>
+      </BrowseInformation>
+      <BrowseInformationFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</BrowseInformationFile>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4800; 4244</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <AdditionalDependencies>../../bin/vc140-x64-$(Configuration)/QuantLib-vc140-x64-mt-gd.lib;../../bin/vc140-x64-$(Configuration)/libboost_unit_test_framework-vc140-mt-gd-1_57.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+    </Bscmake>
+    <PostBuildEvent>
+      <Message>Auto run test</Message>
+      <Command>"$(TargetDir)$(TargetName).exe" --log_level=message --build_info=yes --result_code=no --report_level=short</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TypeLibraryName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\testsuite.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../../QuantLib;../../tapescript/cpp;../../dependencies/cpp;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CL_TAPE_COMPLEX_ENABLED;CL_TAPE;CL_TAPE_CPPAD;CL_TAPE_CAN_GET_VALUE;NDEBUG;WIN32;_CONSOLE;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\testsuite.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</AssemblerListingLocation>
+      <ObjectFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</ObjectFileName>
+      <ProgramDataBaseFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</ProgramDataBaseFileName>
+      <BrowseInformation>
+      </BrowseInformation>
+      <BrowseInformationFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\</BrowseInformationFile>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4800;4244</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>../../bin/vc140-x64-$(Configuration)/QuantLib-vc140-x64-mt.lib;../../bin/vc140-x64-$(Configuration)/libboost_unit_test_framework-vc140-mt-1_57.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+    </Bscmake>
+    <PostBuildEvent>
+      <Message>Auto run test</Message>
+      <Command>"$(TargetDir)$(TargetName).exe" --log_level=message --build_info=yes --result_code=no --report_level=short</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\QuantLib\test-suite\zabr.hpp" />
+    <ClInclude Include="adjointbatesmodelimpl.hpp" />
+    <ClInclude Include="adjointbatesmodeltest.hpp" />
+    <ClInclude Include="adjointbermudanswaptionimpl.hpp" />
+    <ClInclude Include="adjointbermudanswaptiontest.hpp" />
+    <ClInclude Include="adjointblackformulaimpl.hpp" />
+    <ClInclude Include="adjointblackformulatest.hpp" />
+    <ClInclude Include="adjointbondportfolioimpl.hpp" />
+    <ClInclude Include="adjointbondportfoliotest.hpp" />
+    <ClInclude Include="adjointcomplexutils.hpp" />
+    <ClInclude Include="adjointcomplextest.hpp" />
+    <ClInclude Include="adjointcreditdefaultswapimpl.hpp" />
+    <ClInclude Include="adjointcreditdefaultswaptest.hpp" />
+    <ClInclude Include="adjointdefaultprobabilitycurveimpl.hpp" />
+    <ClInclude Include="adjointdefaultprobabilitycurvetest.hpp" />
+    <ClInclude Include="adjointdistributiontest.hpp" />
+    <ClInclude Include="adjointeuropeanoptionportfolioimpl.hpp" />
+    <ClInclude Include="adjointeuropeanoptionportfoliotest.hpp" />
+    <ClInclude Include="adjointexchangerateimpl.hpp" />
+    <ClInclude Include="adjointexchangeratetest.hpp" />
+    <ClInclude Include="adjointfastfouriertransformtest.hpp" />
+    <ClInclude Include="adjointfraportfolioimpl.hpp" />
+    <ClInclude Include="adjointfraportfoliotest.hpp" />
+    <ClInclude Include="adjointgjrgarchmodelimpl.hpp" />
+    <ClInclude Include="adjointgjrgarchmodeltest.hpp" />
+    <ClInclude Include="adjointhestonprocessimpl.hpp" />
+    <ClInclude Include="adjointhestonprocesstest.hpp" />
+    <ClInclude Include="adjointmarketmodelcalibrationimpl.hpp" />
+    <ClInclude Include="adjointmarketmodelcalibrationtest.hpp" />
+    <ClInclude Include="adjointmatricesimpl.hpp" />
+    <ClInclude Include="adjointmatricestest.hpp" />
+    <ClInclude Include="adjointpathgeneratorimpl.hpp" />
+    <ClInclude Include="adjointpathgeneratortest.hpp" />
+    <ClInclude Include="adjointpiecewiseyieldcurveimpl.hpp" />
+    <ClInclude Include="adjointpiecewiseyieldcurvetest.hpp" />
+    <ClInclude Include="adjointrealmathtest.hpp" />
+    <ClInclude Include="adjointshortratemodelsimpl.hpp" />
+    <ClInclude Include="adjointspecialfunctionsimpl.hpp" />
+    <ClInclude Include="adjointspecialfunctionstest.hpp" />
+    <ClInclude Include="adjointswapimpl.hpp" />
+    <ClInclude Include="adjointswaptest.hpp" />
+    <ClInclude Include="adjointswaptionimpl.hpp" />
+    <ClInclude Include="adjointswaptiontest.hpp" />
+    <ClInclude Include="adjointswaptionvolatilitycubeimpl.hpp" />
+    <ClInclude Include="adjointswaptionvolatilitymatriximpl.hpp" />
+    <ClInclude Include="adjointtermstructureimpl.hpp" />
+    <ClInclude Include="adjointvariategeneratorstest.hpp" />
+    <ClInclude Include="adjointzerospreadedtermstructureimpl.hpp" />
+    <ClInclude Include="adjointzerospreadedtermstructuretest.hpp" />
+    <ClInclude Include="adjointshortratemodelstest.hpp" />
+    <ClInclude Include="adjointswaptionvolatilitycubetest.hpp" />
+    <ClInclude Include="adjointswaptionvolatilitymatrixtest.hpp" />
+    <ClInclude Include="adjointtermstructuretest.hpp" />
+    <ClInclude Include="adjointtestbase.hpp" />
+    <ClInclude Include="adjointtestutilities.hpp" />
+    <ClInclude Include="adjointutils.hpp" />
+    <ClInclude Include="utilities.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\QuantLib\test-suite\testsuite.vcxproj.filters" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\QuantLib\test-suite\utilities.cpp" />
+    <ClCompile Include="adjointbatesmodeltest.cpp" />
+    <ClCompile Include="adjointbermudanswaptiontest.cpp" />
+    <ClCompile Include="adjointblackformulatest.cpp" />
+    <ClCompile Include="adjointbondportfoliotest.cpp" />
+    <ClCompile Include="adjointcomplextest.cpp" />
+    <ClCompile Include="adjointcreditdefaultswaptest.cpp" />
+    <ClCompile Include="adjointdefaultprobabilitycurvetest.cpp" />
+    <ClCompile Include="adjointdistributiontest.cpp" />
+    <ClCompile Include="adjointeuropeanoptionportfoliotest.cpp" />
+    <ClCompile Include="adjointexchangeratetest.cpp" />
+    <ClCompile Include="adjointfastfouriertransformtest.cpp" />
+    <ClCompile Include="adjointfraportfoliotest.cpp" />
+    <ClCompile Include="adjointgjrgarchmodeltest.cpp" />
+    <ClCompile Include="adjointhestonprocesstest.cpp" />
+    <ClCompile Include="adjointmarketmodelcalibrationtest.cpp" />
+    <ClCompile Include="adjointmatricestest.cpp" />
+    <ClCompile Include="adjointpathgeneratortest.cpp" />
+    <ClCompile Include="adjointpiecewiseyieldcurvetest.cpp" />
+    <ClCompile Include="adjointrealmathtest.cpp" />
+    <ClCompile Include="adjointspecialfunctionstest.cpp" />
+    <ClCompile Include="adjointswaptest.cpp" />
+    <ClCompile Include="adjointvariategeneratorstest.cpp" />
+    <ClCompile Include="adjointzerospreadedtermstructuretest.cpp" />
+    <ClCompile Include="adjointshortratemodelstest.cpp" />
+    <ClCompile Include="adjointswaptiontest.cpp" />
+    <ClCompile Include="adjointswaptionvolatilitycubetest.cpp" />
+    <ClCompile Include="adjointswaptionvolatilitymatrixtest.cpp" />
+    <ClCompile Include="adjointtermstructuretest.cpp" />
+    <ClCompile Include="quantlibtestsuite.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

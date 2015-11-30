@@ -18,8 +18,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_gjrgarchmodel_hpp
-#define ad_gjrgarchmodel_hpp
+#ifndef cl_adjoint_gjrgarchmodel_hpp
+#define cl_adjoint_gjrgarchmodel_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 
@@ -30,4 +31,4 @@ public:
     static boost::unit_test_framework::test_suite* suite();
 };
 
-#endif 
+#endif

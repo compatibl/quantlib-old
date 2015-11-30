@@ -1,6 +1,8 @@
 /* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
+Copyright (C) 2006 Ferdinando Ametrano
+Copyright (C) 2006 François du Vignaud
 Copyright (C) 2015 CompatibL
 
 This file is part of QuantLib, a free-software/open-source library
@@ -17,15 +19,19 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_swaption_volatility_matrix_hpp
-#define ad_swaption_volatility_matrix_hpp
+#ifndef cl_adjoint_swaption_volatility_matrix_hpp
+#define cl_adjoint_swaption_volatility_matrix_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 
 class AdjointSwaptionVolatilityMatrixTest
 {
 public:
-    static bool testSwaptionVolMatrixCoherence();
+    static bool testSwaptionVolMatrixFloatDateFloatData();
+    static bool testSwaptionVolMatrixFixedDateFloatData();
+    static bool testSwaptionVolMatrixFloatDateFixedData();
+    static bool testSwaptionVolMatrixFixedDateFixedData();
     static boost::unit_test_framework::test_suite* suite();
 };
 

@@ -47,24 +47,38 @@
 #include "utilities.hpp"
 
 #include "adjointcreditdefaultswaptest.hpp"
-#include "adjointpiecewisezerospreadedtermstructuretest.hpp"
+#include "adjointzerospreadedtermstructuretest.hpp"
 #include "adjointtermstructuretest.hpp"
 #include "adjointbermudanswaptiontest.hpp"
 #include "adjointeuropeanoptionportfoliotest.hpp"
 #include "adjointmatricestest.hpp"
 #include "adjointswaptionvolatilitycubetest.hpp"
-#include "adjointswaptionvolatilitymatrixtest.hpp"
 #include "adjointpathgeneratortest.hpp"
 #include "adjointpiecewiseyieldcurvetest.hpp"
 #include "adjointmarketmodelcalibrationtest.hpp"
 #include "adjointswaptiontest.hpp"
 #include "adjointgjrgarchmodeltest.hpp"
-#include "adjointswaptest.hpp"
+#include "adjointgreekstest.hpp"
 #include "adjointpiecewiseyieldcurvetest.hpp"
 #include "adjointshortratemodelstest.hpp"
 #include "adjointblackformulatest.hpp"
 #include "adjointbondportfoliotest.hpp"
+#include "adjointdistributiontest.hpp"
+#include "adjointrealmathtest.hpp"
+#include "adjointdefaultprobabilitycurvetest.hpp"
+#include "adjointswaptest.hpp"
+#include "adjointvariategeneratorstest.hpp"
+#include "adjointfraportfoliotest.hpp"
 
+# if defined FIXED_
+#include "adjointarraytest.hpp"
+# endif
+
+#include "adjointcomplextest.hpp"
+#include "adjointfastfouriertransformtest.hpp"
+#include "adjointhestonprocesstest.hpp"
+#include "adjointbatesmodeltest.hpp"
+#include "adjointspecialfunctionstest.hpp"
 
 using namespace boost::unit_test_framework;
 
@@ -138,6 +152,7 @@ test_suite* init_unit_test_suite(int, char* []) {
             " undefined"
             #endif
          ;
+# pragma message ("AdjointArrayTest::suite() was exclude from project in 2015 because it does not buildable.")
     std::string rule = std::string(35, '=');
 
     BOOST_TEST_MESSAGE(rule);
@@ -148,22 +163,48 @@ test_suite* init_unit_test_suite(int, char* []) {
     test->add(QUANTLIB_TEST_CASE(startTimer));
     test->add(QUANTLIB_TEST_CASE(configure));
 
-#if defined CL_TAPE_CPPAD && !defined CL_ENABLE_BOOST_TEST_ADAPTER
-    test->add(AdjointPiecewiseYieldCurveTest::suite());
+//#   define CL_CERTAIN_TEST AdjointArrayTest
+
+#if defined CL_CERTAIN_TEST
+    test->add(CL_CERTAIN_TEST::suite());
+#endif
+
+#if !defined CL_ENABLE_BOOST_TEST_ADAPTER && !defined CL_CERTAIN_TEST
     test->add(AdjointBondPortfolioTest::suite());
     test->add(AdjointCreditDefaultSwapTest::suite());
     test->add(AdjointEuropeanOptionPortfolioTest::suite());
     test->add(AdjointGjrgarchModelTest::suite());
+    test->add(AdjointFRAPortfolioTest::suite());
     test->add(AdjointMarketModelCalibrationTest::suite());
     test->add(AdjointMatricesTest::suite());
     test->add(AdjointPathGeneratorTest::suite());
     test->add(AdjointPiecewiseYieldCurveTest::suite());
-    test->add(AdjointPiecewiseZeroSpreadedTermStructureTest::suite());
+    test->add(AdjointZeroSpreadedTermStructureTest::suite());
     test->add(AdjointShortRateModelsTest::suite());
-    test->add(AdjointSwapTest::suite());
     test->add(AdjointSwaptionTest::suite());
     test->add(AdjointSwaptionVolatilityCubeTest::suite());
-    test->add(AdjointSwaptionVolatilityMatrixTest::suite());
+    test->add(AdjointDistributionTest::suite());
+    test->add(AdjointRealMathTest::suite());
+    test->add(AdjointDefaultProbabilityCurveTest::suite());
+    test->add(AdjointSwapTest::suite());
+    test->add(AdjointVariateGeneratorsTest::suite());
+
+
+# if defined FIXED_
+    test->add(AdjointArrayTest::suite());
+# endif
+
+    test->add(AdjointGreeksTest::suite());
+
+    test->add(AdjointHestonProcessTest::suite());
+
+    // Complex Differentiation test
+#if defined CL_TAPE_COMPLEX_ENABLED
+    test->add(AdjointComplexTest::suite());
+    test->add(AdjointFastFourierTransformTest::suite());
+    test->add(AdjointBatesModelTest::suite());
+    test->add(AdjointSpecialFunctionsTest::suite());
+#endif
 
     // very slow
     test->add(AdjointBermudanSwaptionTest::suite());

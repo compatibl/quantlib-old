@@ -19,146 +19,65 @@ This program is distributed in the hope that it will be useful, but WITHOUT
 ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
+#include "adjointswaptionvolatilitycubeimpl.hpp"
 
-#include "adjointswaptionvolatilitycubetest.hpp"
-#include <test-suite/swaptionvolstructuresutilities.hpp>
-#include "utilities.hpp"
-#include "adjointtestutilities.hpp"
-#include <ql/indexes/swap/euriborswap.hpp>
-#include <ql/quotes/simplequote.hpp>
-#include <ql/termstructures/volatility/swaption/swaptionvolcube2.hpp>
-#include <ql/termstructures/volatility/swaption/swaptionvolcube1.hpp>
-#include <ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp>
-#include <ql/utilities/dataformatters.hpp>
 
 using namespace QuantLib;
 using namespace boost::unit_test_framework;
 
-namespace {
 
-    struct CommonVars
-    {
-        CommonVars()
-            : vegaWeighedSmileFit(false)
-        {
-            conventions.setConventions();
+bool AdjointSwaptionVolatilityCubeTest::testImpliedVolatilitiesDiffVols() {
 
-            // ATM swaptionvolmatrix
-            atm.setMarketData();
+    BOOST_TEST_MESSAGE("Testing swaption volatility cube Volatility (implied vols differentiation)...");
 
-            atmVolMatrix = RelinkableHandle<SwaptionVolatilityStructure>(
-                boost::shared_ptr<SwaptionVolatilityStructure>(new
-                SwaptionVolatilityMatrix(conventions.calendar,
-                conventions.optionBdc,
-                atm.tenors.options,
-                atm.tenors.swaps,
-                atm.volsHandle,
-                conventions.dayCounter)));
-            // Swaptionvolcube
-            cube.setMarketData();
+    SwaptionVolatilityCubeTestData testData(TestType::VolAtmVol);
 
-            termStructure.linkTo(flatRate(0.05, Actual365Fixed()));
 
-            swapIndexBase = boost::shared_ptr<SwapIndex>(new
-                EuriborSwapIsdaFixA(2 * Years, termStructure));
-            shortSwapIndexBase = boost::shared_ptr<SwapIndex>(new
-                EuriborSwapIsdaFixA(1 * Years, termStructure));
-        }
+    SwaptionVolatilityCubeTestDiffVols test(&testData);
 
-        bool makeAtmVolTest(const SwaptionVolatilityCube& volCube, Real tolerance)
-        {
-            bool result = true;;
-            for (Size i = 0; i < atm.tenors.options.size(); i++) {
-                for (Size j = 0; j < atm.tenors.swaps.size(); j++) {
-                    Rate strike = volCube.atmStrike(atm.tenors.options[i],
-                        atm.tenors.swaps[j]);
-                    std::vector<cl::TapeDouble> X(1, strike);
+    cl::Independent(test.vols_[test.optionTenorNumber_]);
+    // Calculate volatilites.
+    test.calculateBlackVar();
+    cl::tape_function<double> f(test.vols_[test.optionTenorNumber_], test.BlackVariance_);
 
-                    //Beginning of tape recording
-                    Independent(X);
-                    Volatility actVol = volCube.volatility(atm.tenors.options[i],
-                        atm.tenors.swaps[j],
-                        X[0], true);
-                    std::vector<cl::TapeDouble> Y(1);
-                    Y[0] = actVol;
+    // Calculating derivatives using adjoint.
+    test.adjointResults_ = f.Jacobian(test.indepDouble_);
 
-                    //End of tape recording. Differentiaion wiil be held with respect to  the independent variables vector
-                    cl::TapeFunction<double> f(X, Y);
+    // Calculate derivatives using the analytical formula.
+    test.calcAnalytical();
 
-                    //Differentiation in Forward mode
-                    std::vector<double> dY = f.Forward(1, std::vector<double>(1, 1));
-
-                    //Finite differences (forward difference)
-                    Real h = 1e-7 * strike;
-                    Rate strikeShifted = strike + h;
-                    Volatility actVolShifted = volCube.volatility(atm.tenors.options[i],
-                        atm.tenors.swaps[j],
-                        strikeShifted, true);
-                    std::vector<Real> finDiff;
-                    finDiff.push_back((actVolShifted - actVol) / h);
-
-                    if (std::abs(dY[0] - finDiff[0]) > tolerance) {
-                        result = false;
-                        BOOST_ERROR("\ndifferettiation of recovered atm vols failed:"
-                            "\nexpiry time     = " << atm.tenors.options[i] <<
-                            "\nswap length     = " << atm.tenors.swaps[j] <<
-                            "\n atm strike     = " << io::rate(strike) <<
-                            "\n actual vol     = " << io::volatility(actVol) <<
-                            "\n adjoint res    = " << io::volatility(actVol) <<
-                            "\n fin. diff. res = " << io::volatility(actVol) <<
-                            "\n  tolerance     = " << tolerance);
-                    }
-                }
-            }
-            return result;
-        }
-
-        // global data
-        SwaptionMarketConventions conventions;
-        AtmVolatility atm;
-        RelinkableHandle<SwaptionVolatilityStructure> atmVolMatrix;
-        VolatilityCube cube;
-        RelinkableHandle<YieldTermStructure> termStructure;
-        boost::shared_ptr<SwapIndex> swapIndexBase;
-        boost::shared_ptr<SwapIndex> shortSwapIndexBase;
-        bool vegaWeighedSmileFit;
-
-        // cleanup
-        SavedSettings backup;
-
-    };
-
+    return test.checkAdjoint();
 }
 
+bool AdjointSwaptionVolatilityCubeTest::testBlackVariancesDiffVols() {
 
-bool AdjointSwaptionVolatilityCubeTest::testAtmVols() {
+    BOOST_TEST_MESSAGE("Testing swaption volatility cube blackVariance (implied vols differentiation)...");
 
-    BOOST_TEST_MESSAGE("Testing swaption volatility cube (implied vols differentiation)...");
+    SwaptionVolatilityCubeTestData testData(TestType::VolBlackVariance);
 
-#ifdef CL_TAPE_CPPAD
+    SwaptionVolatilityCubeTestDiffVols test(&testData);
 
-    CommonVars vars;
+    cl::Independent(test.vols_[test.optionTenorNumber_]);
+    // Calculate black variances.
+    test.calculateBlackVar();
+    cl::tape_function<double> f(test.vols_[test.optionTenorNumber_], test.BlackVariance_);
 
-    SwaptionVolCube2 volCube(vars.atmVolMatrix,
-        vars.cube.tenors.options,
-        vars.cube.tenors.swaps,
-        vars.cube.strikeSpreads,
-        vars.cube.volSpreadsHandle,
-        vars.swapIndexBase,
-        vars.shortSwapIndexBase,
-        vars.vegaWeighedSmileFit);
+    // Calculating derivatives using adjoint.
+    test.adjointResults_ = f.Jacobian(test.indepDouble_);
 
-    Real tolerance = 1.0e-6;
-    return vars.makeAtmVolTest(volCube, tolerance);
-#endif
-    return true;
+    // Calculate derivatives using analytical formula.
+    test.calcAnalytical();
+
+    return test.checkAdjoint();
 }
+
 
 
 test_suite* AdjointSwaptionVolatilityCubeTest::suite() {
     test_suite* suite = BOOST_TEST_SUITE("Swaption Volatility Cube tests");
 
-    suite->add(QUANTLIB_TEST_CASE(&AdjointSwaptionVolatilityCubeTest::testAtmVols));
+    suite->add(QUANTLIB_TEST_CASE(&AdjointSwaptionVolatilityCubeTest::testImpliedVolatilitiesDiffVols));
+    suite->add(QUANTLIB_TEST_CASE(&AdjointSwaptionVolatilityCubeTest::testBlackVariancesDiffVols));
 
     return suite;
 }
@@ -167,9 +86,14 @@ test_suite* AdjointSwaptionVolatilityCubeTest::suite() {
 
 BOOST_AUTO_TEST_SUITE(ad_swaption_volatility_cube)
 
-BOOST_AUTO_TEST_CASE(testSwaptionVolatilityCubeAtmVols)
+BOOST_AUTO_TEST_CASE(testSwaptionVolatilityCubeImpliedVolatilitiesDiffVols)
 {
-    BOOST_CHECK(AdjointSwaptionVolatilityCubeTest::testAtmVols());
+    BOOST_CHECK(AdjointSwaptionVolatilityCubeTest::testImpliedVolatilitiesDiffVols());
+}
+
+BOOST_AUTO_TEST_CASE(testSwaptionVolatilityCubeBlackVariancesDiffVols)
+{
+    BOOST_CHECK(AdjointSwaptionVolatilityCubeTest::testBlackVariancesDiffVols());
 }
 
 BOOST_AUTO_TEST_SUITE_END()

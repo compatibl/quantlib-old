@@ -18,20 +18,19 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_swap_hpp
-#define ad_swap_hpp
+#ifndef cl_adjoint_swap_hpp
+#define cl_adjoint_swap_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 
 class AdjointSwapTest
 {
 public:
-    static bool testFairRate();
-    static bool testFairSpread();
     static bool testRateDependency();
     static bool testSpreadDependency();
     static bool testInArrears();
     static boost::unit_test_framework::test_suite* suite();
 };
 
-#endif 
+#endif

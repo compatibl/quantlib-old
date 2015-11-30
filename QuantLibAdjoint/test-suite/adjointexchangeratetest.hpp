@@ -18,8 +18,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_exchange_rate_hpp
-#define ad_exchange_rate_hpp
+#ifndef cl_adjoint_exchange_rate_hpp
+#define cl_adjoint_exchange_rate_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 

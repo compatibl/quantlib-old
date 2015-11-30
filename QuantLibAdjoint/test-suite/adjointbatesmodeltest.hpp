@@ -1,7 +1,8 @@
 /* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
-Copyright (C) 2014 StatPro Italia srl
+Copyright (C) 2005, 2008 Klaus Spanderen
+Copyright (C) 2007 StatPro Italia srl
 Copyright (C) 2015 CompatibL
 
 This file is part of QuantLib, a free-software/open-source library
@@ -18,27 +19,18 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_test_piecewise_zero_spreaded_term_structure_hpp
-#define ad_test_piecewise_zero_spreaded_term_structure_hpp
+#ifndef quantlib_test_ad_bates_model_hpp
+#define quantlib_test_ad_bates_model_hpp
 
 #include <boost/test/unit_test.hpp>
 
-/* remember to document new and/or updated tests in the Doxygen
-comment block of the corresponding class */
 
-class AdjointPiecewiseZeroSpreadedTermStructureTest {
+class AdjointBatesModelTest {
 public:
-    static bool testFlatInterpolationLeft();
-    static bool testFlatInterpolationRight();
-    static bool testLinearInterpolationMultipleSpreads();
-    static bool testLinearInterpolation();
-    static bool testForwardFlatInterpolation();
-    static bool testBackwardFlatInterpolation();
-    static bool testDefaultInterpolation();
-    static bool testSetInterpolationFactory();
-    static bool testQuoteChanging();
-
+    static bool testBatesModelOnStrikePrice();
+    static bool testBatesModelOnDividentRate();
     static boost::unit_test_framework::test_suite* suite();
 };
+
 
 #endif

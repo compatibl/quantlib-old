@@ -19,8 +19,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_default_curves_hpp
-#define ad_default_curves_hpp
+#ifndef cl_adjoint_default_curves_hpp
+#define cl_adjoint_default_curves_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 

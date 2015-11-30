@@ -18,18 +18,18 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_path_generator_hpp
-#define ad_path_generator_hpp
+#ifndef cl_adjoint_path_generators_hpp
+#define cl_adjoint_path_generators_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 
 class AdjointPathGeneratorTest
 {
 public:
-    static bool testPathGenerator();
-    static bool testMultiPathGenerator();
+    static bool testBlackSholesPathGenerator();
+    static bool testOrnsteinUhlenbeckPathGenerator();
+    static bool testSquareRootPathGenerator();
     static boost::unit_test_framework::test_suite* suite();
 };
-
-
 #endif

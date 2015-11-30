@@ -9,6 +9,9 @@
       <UniqueIdentifier>{81f4dd97-ebaa-4335-ad75-f4edcbce36bb}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl</Extensions>
     </Filter>
+    <Filter Include="tape">
+      <UniqueIdentifier>{2ca18fa2-a7fa-443f-9398-ae8701b64f25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adjointblackformulatest.cpp">
@@ -18,9 +21,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="adjointbondportfoliotest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="adjointfraportfoliotest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="adjointeuropeanoptionportfoliotest.cpp">
@@ -33,12 +33,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="adjointcreditdefaultswaptest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="adjointcurvefittingtest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="adjointdefaultprobabilitycurvetest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="adjointexchangeratetest.cpp">
@@ -59,13 +53,7 @@
     <ClCompile Include="adjointpiecewiseyieldcurvetest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="adjointpiecewisezerospreadedtermstructuretest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="adjointshortratemodelstest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="adjointswaptest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="adjointswaptiontest.cpp">
@@ -74,10 +62,52 @@
     <ClCompile Include="adjointswaptionvolatilitycubetest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="adjointswaptionvolatilitymatrixtest.cpp">
+    <ClCompile Include="adjointtermstructuretest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="adjointtermstructuretest.cpp">
+    <ClCompile Include="adjointzerospreadedtermstructuretest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointdistributiontest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointfraportfoliotest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointrealmathtest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointdefaultprobabilitycurvetest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointcomplextest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointdefaultprobabilitycurvetest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointfastfouriertransformtest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointswaptest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointvariategeneratorstest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointhestonprocesstest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointbatesmodeltest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointspecialfunctionstest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointarraytest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adjointgreekstest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -94,28 +124,16 @@
     <ClInclude Include="adjointeuropeanoptionportfoliotest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adjointfraportfoliotest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="adjointbermudanswaptiontest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="adjointcreditdefaultswaptest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adjointcurvefittingtest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="adjointdefaultprobabilitycurvetest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="adjointexchangeratetest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="adjointgjrgarchmodeltest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="adjointgreektest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="adjointmarketmodelcalibrationtest.hpp">
@@ -130,28 +148,13 @@
     <ClInclude Include="adjointpiecewiseyieldcurvetest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adjointpiecewisezerospreadedtermstructuretest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="adjointshortratemodelstest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="adjointswaptest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="adjointswaptiontest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="adjointswaptionvolatilitycubetest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adjointswaptionvolatilitymatrixtest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="adjointtermstructuretest.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="adjointtestoutput.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="adjointtestutilities.hpp">
@@ -161,6 +164,180 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utilities.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointtestbase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointzerospreadedtermstructuretest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointbermudanswaptionimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointdistributiontest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointfraportfolioimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointfraportfoliotest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointmatricesimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointeuropeanoptionportfolioimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointblackformulaimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointbondportfolioimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointexchangerateimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointgjrgarchmodelimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointpathgeneratorimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointpiecewiseyieldcurveimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointswaptionimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointswaptiontest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointrealmathtest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointcomplextest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointcreditdefaultswapimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointdefaultprobabilitycurveimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointdefaultprobabilitycurvetest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointfastfouriertransformtest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointmarketmodelcalibrationimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointshortratemodelsimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointswapimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointswaptest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointswaptionvolatilitycubeimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointtermstructureimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointvariategeneratorstest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointzerospreadedtermstructureimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointhestonprocessimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointhestonprocesstest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointbatesmodelimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointbatesmodeltest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointcomplexutils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointspecialfunctionsimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointspecialfunctionstest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\adjointref.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\adjointrefoperator.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\boost_connectors.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\complex.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\double.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\doubleconverter.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\doublelimits.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\doublemath.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\doubleoperatorcheck.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\doubleoperators.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\std_fwd.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\tape_fwd.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\traits.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\tape.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\ad\tape_forward0sweep.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\ad\tape_forward1sweep.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tapescript\cpp\cl\tape\impl\ad\tape_serializer.hpp">
+      <Filter>tape</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointarraytest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointarrayimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointgreekstest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjointgreeksimpl.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

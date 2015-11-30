@@ -19,14 +19,22 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef quantlib_test_adjoint_swaption_volatility_cube_hpp
-#define quantlib_test_adjoint_swaption_volatility_cube_hpp
+#ifndef cl_adjoint_swaption_volatility_cube_hpp
+#define cl_adjoint_swaption_volatility_cube_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 
 class AdjointSwaptionVolatilityCubeTest {
 public:
-    static bool testAtmVols();
+    //test Implied volatility derivative on strike
+    static bool testImpliedVolatilitiesDiffStrike();
+    //test Implied volatility derivative on input to volatility cube volatility
+    static bool testImpliedVolatilitiesDiffVols();
+    //test Black Variance derivative on input to volatility cube volatility
+    static bool testBlackVariancesDiffVols();
+    //test Black Variance derivative on strike
+    static bool testBlackVarianceDiffStrike();
 
     static boost::unit_test_framework::test_suite* suite();
 };

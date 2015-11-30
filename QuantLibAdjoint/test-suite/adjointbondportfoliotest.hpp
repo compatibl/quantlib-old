@@ -1,7 +1,6 @@
 /* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 
 /*
-Copyright (C) 2004 StatPro Italia srl
 Copyright (C) 2015 CompatibL
 
 This file is part of QuantLib, a free-software/open-source library
@@ -18,8 +17,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_bond_portfolio_hpp
-#define ad_bond_portfolio_hpp
+#ifndef cl_adjoint_bond_portfolio_hpp
+#define cl_adjoint_bond_portfolio_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 

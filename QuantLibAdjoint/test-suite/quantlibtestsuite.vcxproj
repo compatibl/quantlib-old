@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>quantlibtestsuite</ProjectName>
+    <ProjectGuid>{1F2F4204-5DB9-4B01-8254-7468ED4659E6}</ProjectGuid>
+    <RootNamespace>testsuite</RootNamespace>
+    <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and $(VisualStudioVersion) == ''">$(VCTargetsPath11)</VCTargetsPath>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="..\QuantLibAdjoint.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</EmbedManifest>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</EmbedManifest>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</PostBuildEventUseInBuild>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QuantLib-test-suite-$(qlCompilerTag)-x64-mt</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QuantLib-test-suite-$(qlCompilerTag)-x64-mt-gd</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TypeLibraryName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\testsuite.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../QuantLib;../../tapescript/cpp;../../dependencies/cpp;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CL_TAPE_COMPLEX_ENABLED;CL_ENABLE_BOOST_TEST_ADAPTER;CL_TAPE;CL_TAPE_CPPAD;CL_TAPE_CAN_GET_VALUE;_DEBUG;WIN32;_CONSOLE;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\testsuite.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</AssemblerListingLocation>
+      <ObjectFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</ObjectFileName>
+      <ProgramDataBaseFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</ProgramDataBaseFileName>
+      <BrowseInformation>
+      </BrowseInformation>
+      <BrowseInformationFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</BrowseInformationFile>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4800; 4244</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <AdditionalDependencies>../../bin/vc120-x64-$(Configuration)/QuantLib-vc120-x64-mt-gd.lib;../../bin/vc120-x64-$(Configuration)/libboost_unit_test_framework-vc120-mt-gd-1_57.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+    </Bscmake>
+    <PostBuildEvent>
+      <Message>Auto run test</Message>
+      <Command>"$(TargetDir)$(TargetName).exe" --log_level=message --build_info=yes --result_code=no --report_level=short</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TypeLibraryName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)\testsuite.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../../QuantLib;../../tapescript/cpp;../../dependencies/cpp;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>CL_TAPE_COMPLEX_ENABLED;CL_ENABLE_BOOST_TEST_ADAPTER;CL_TAPE;CL_TAPE_CPPAD;CL_TAPE_CAN_GET_VALUE;NDEBUG;WIN32;_CONSOLE;_SCL_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>.\build\$(qlCompilerTag)-ql\$(Platform)\$(Configuration)-ql\quantlibtestsuite.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</AssemblerListingLocation>
+      <ObjectFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</ObjectFileName>
+      <ProgramDataBaseFileName>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</ProgramDataBaseFileName>
+      <BrowseInformation>
+      </BrowseInformation>
+      <BrowseInformationFile>.\build\$(qlCompilerTag)\$(Platform)\$(Configuration)-ql\</BrowseInformationFile>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4800;4244</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>../../bin/vc120-x64-$(Configuration)/QuantLib-vc120-x64-mt.lib;../../bin/vc120-x64-$(Configuration)/libboost_unit_test_framework-vc120-mt-1_57.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+    </Bscmake>
+    <PostBuildEvent>
+      <Message>Auto run test</Message>
+      <Command>"$(TargetDir)$(TargetName).exe" --log_level=message --build_info=yes --result_code=no --report_level=short</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\QuantLib\test-suite\americanoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\amortizingbond.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\array.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\asianoptions.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\assetswap.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\autocovariances.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\barrieroption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\basketoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\batesmodel.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\bermudanswaption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\binaryoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\blackdeltacalculator.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\blackformula.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\bonds.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\brownianbridge.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\businessdayconventions.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\calendars.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\capfloor.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\capflooredcoupon.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\cashflows.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\catbonds.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\cdo.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\cdsoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\chooseroption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\cliquetoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\cms.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\commodityunitofmeasure.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\compoundoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\convertiblebonds.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\covariance.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\creditdefaultswap.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\creditriskplus.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\curvestates.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\dates.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\daycounters.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\defaultprobabilitycurves.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\digitalcoupon.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\digitaloption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\distributions.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\dividendoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\doublebarrieroption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\doublebinaryoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\europeanoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\everestoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\exchangerate.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\extendedtrees.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\extensibleoptions.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\functions.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\fastfouriertransform.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\fdheston.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\fdmlinearop.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\forwardoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\garch.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\gaussianquadratures.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\gjrgarchmodel.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\gsr.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\hestonmodel.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\himalayaoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\hybridhestonhullwhiteprocess.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\inflation.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\inflationcapfloor.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\inflationcapflooredcoupon.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\inflationcpibond.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\inflationcpicapfloor.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\inflationcpiswap.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\inflationvolatility.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\instruments.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\integrals.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\interestrates.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\interpolations.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\jumpdiffusion.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\libormarketmodel.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\libormarketmodelprocess.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\linearleastsquaresregression.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\lookbackoptions.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\lowdiscrepancysequences.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\margrabeoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\marketmodel.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\marketmodel_cms.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\marketmodel_smm.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\marketmodel_smmcapletalphacalibration.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\marketmodel_smmcapletcalibration.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\marketmodel_smmcaplethomocalibration.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\markovfunctional.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\matrices.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\mclongstaffschwartzengine.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\mersennetwister.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\money.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\noarbsabr.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\nthtodefault.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\numericaldifferentiation.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\ode.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\operators.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\optimizers.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\optionletstripper.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\overnightindexedswap.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\pagodaoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\partialtimebarrieroption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\pathgenerator.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\period.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\piecewiseyieldcurve.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\piecewisezerospreadedtermstructure.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\quantooption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\quotes.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\rangeaccrual.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\riskstats.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\rngtraits.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\rounding.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\sampledcurve.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\schedule.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\shortratemodels.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\solvers.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\spreadoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\stats.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\swap.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\swapforwardmappings.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\swaption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\swaptionvolatilitycube.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\swaptionvolatilitymatrix.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\swingoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\termstructures.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\timeseries.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\tqreigendecomposition.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\tracing.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\transformedgrid.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\twoassetbarrieroption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\twoassetcorrelationoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\utilities.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\variancegamma.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\varianceoption.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\varianceswaps.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\volatilitymodels.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\vpp.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\zabr.cpp" />
+    <ClCompile Include="..\..\QuantLib\test-suite\quantlibtestsuite.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\QuantLib\test-suite\americanoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\amortizingbond.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\array.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\asianoptions.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\assetswap.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\autocovariances.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\barrieroption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\basketoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\batesmodel.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\bermudanswaption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\binaryoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\blackdeltacalculator.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\blackformula.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\bonds.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\brownianbridge.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\businessdayconventions.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\calendars.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\capfloor.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\capflooredcoupon.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\cashflows.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\catbonds.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\cdo.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\cdsoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\chooseroption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\cliquetoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\cms.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\commodityunitofmeasure.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\compoundoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\convertiblebonds.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\covariance.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\creditdefaultswap.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\creditriskplus.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\curvestates.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\dates.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\daycounters.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\defaultprobabilitycurves.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\digitalcoupon.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\digitaloption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\distributions.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\dividendoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\doublebarrieroption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\doublebinaryoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\europeanoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\everestoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\exchangerate.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\extendedtrees.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\extensibleoptions.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\functions.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\fastfouriertransform.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\fdheston.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\fdmlinearop.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\forwardoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\garch.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\gaussianquadratures.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\gjrgarchmodel.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\gsr.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\hestonmodel.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\himalayaoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\hybridhestonhullwhiteprocess.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\inflation.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\inflationcapfloor.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\inflationcapflooredcoupon.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\inflationcpibond.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\inflationcpicapfloor.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\inflationcpiswap.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\inflationvolatility.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\instruments.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\integrals.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\interestrates.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\interpolations.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\jumpdiffusion.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\libormarketmodel.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\libormarketmodelprocess.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\linearleastsquaresregression.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\lookbackoptions.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\lowdiscrepancysequences.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\margrabeoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\marketmodel.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\marketmodel_cms.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\marketmodel_smm.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\marketmodel_smmcapletalphacalibration.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\marketmodel_smmcapletcalibration.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\marketmodel_smmcaplethomocalibration.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\markovfunctional.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\matrices.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\mclongstaffschwartzengine.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\mersennetwister.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\money.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\noarbsabr.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\nthtodefault.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\numericaldifferentiation.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\ode.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\operators.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\optimizers.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\optionletstripper.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\overnightindexedswap.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\pagodaoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\partialtimebarrieroption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\pathgenerator.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\period.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\piecewiseyieldcurve.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\piecewisezerospreadedtermstructure.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\quantooption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\quotes.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\rangeaccrual.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\riskstats.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\rngtraits.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\rounding.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\sampledcurve.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\schedule.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\shortratemodels.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\solvers.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\spreadoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\stats.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\swap.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\swapforwardmappings.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\swaption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\swaptionvolatilitycube.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\swaptionvolatilitymatrix.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\swaptionvolstructuresutilities.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\swingoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\termstructures.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\timeseries.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\tqreigendecomposition.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\tracing.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\transformedgrid.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\twoassetbarrieroption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\twoassetcorrelationoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\utilities.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\variancegamma.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\varianceoption.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\varianceswaps.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\volatilitymodels.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\vpp.hpp" />
+    <ClInclude Include="..\..\QuantLib\test-suite\zabr.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,3 +1,5 @@
+/* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+
 /*
 Copyright (C) 2015 CompatibL
 
@@ -15,8 +17,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef quantlib_test_adjoint_utilities_hpp
-#define quantlib_test_adjoint_utilities_hpp
+#ifndef cl_adjoint_utilities_hpp
+#define cl_adjoint_utilities_hpp
+#pragma once
 
 #include "utilities.hpp"
 #include "adjointutils.hpp"
@@ -81,7 +84,7 @@ namespace QuantLib {
         const std::vector<double>& forwardMode,
         const std::vector<double>& reverseMode,
         const std::vector<Real  >& finiteDiff,
-        cl::AdjointTestOutput& out,
+        cl::tape_empty_test_output& out,
         double relativeTol,
         double absTol = 1e-10)
     {
@@ -148,16 +151,19 @@ namespace QuantLib {
         Real absoluteTol)
     {
         bool result = true;
-        if (adjointDeriv.size() != finiteDiffDeriv.size()) {
+        if (adjointDeriv.size() != finiteDiffDeriv.size())
+        {
             result = false;
             BOOST_ERROR("\nAn adjoint derivatives vector and a finite "
                 "difference derivatives vector have different sizes.");
         }
-        for (size_t i = 0, n = adjointDeriv.size(); i < n; ++i) {
+        for (size_t i = 0, n = adjointDeriv.size(); i < n; ++i)
+        {
             Real err = std::abs(adjointDeriv[i] - finiteDiffDeriv[i]);
             Real toler = std::max(absoluteTol,
                 relativeTol * std::max(std::abs(adjointDeriv[i]), std::abs(finiteDiffDeriv[i])));
-            if (err > toler) {
+            if (err > toler)
+            {
                 result = false;
                 BOOST_ERROR("\nAdjoint derivative and finite difference derivative at position " << i << " mismatch."
                     << "\n  adjoint: " << adjointDeriv[i]
@@ -166,6 +172,83 @@ namespace QuantLib {
             }
         }
         return result;
+    }
+
+
+    // checking consistency of vectors elements
+    template <class T>
+    inline bool checkWithFiniteDiff(
+        const std::vector<T>& adjointDeriv,
+        const std::vector<Real>& finiteDiffDeriv,
+        cl::tape_empty_test_output& out,
+        Real relativeTol,
+        Real absoluteTol)
+    {
+        bool result = true;
+        if (adjointDeriv.size() != finiteDiffDeriv.size())
+        {
+            result = false;
+            BOOST_ERROR("\nAn adjoint derivatives vector and a finite "
+                "difference derivatives vector have different sizes.");
+            out.log() << "\nAn adjoint derivatives vector and a finite "
+                << "difference derivatives vector have different sizes." << std::endl;
+        }
+        for (size_t i = 0, n = adjointDeriv.size(); i < n; ++i)
+        {
+            Real err = std::abs(adjointDeriv[i] - finiteDiffDeriv[i]);
+            Real toler = std::max(absoluteTol,
+                relativeTol * std::max(std::abs(adjointDeriv[i]), std::abs(finiteDiffDeriv[i])));
+            if (err > toler)
+            {
+                result = false;
+                BOOST_ERROR("\nAdjoint derivative and finite difference derivative at position " << i << " mismatch."
+                    << "\n  adjoint: " << adjointDeriv[i]
+                    << "\n  finite difference: " << finiteDiffDeriv[i]
+                    << "\n  tolerance: " << toler);
+                out.log() << "\nAdjoint derivative and finite difference derivative at position " << i << " mismatch."
+                    << "\n  adjoint: " << adjointDeriv[i]
+                    << "\n  finite difference: " << finiteDiffDeriv[i]
+                    << "\n  tolerance: " << toler << std::endl;
+            }
+        }
+        return result;
+    }
+
+
+    // adapter for Jacobian
+    inline std::vector<Real> jacobian(cl::tape_function<double>& f, std::vector<Real> const& x)
+    {
+        std::vector<double> xd, yd;
+        std::for_each(x.cbegin(), x.cend(),
+            [&](Real const& a){ xd.push_back(double(a)); }
+        );
+        yd = f.Jacobian(xd);
+        std::vector<Real> y;
+        std::for_each(yd.cbegin(), yd.cend(),
+            [&](double const& a){ y.push_back(Real(a)); }
+        );
+        return y;
+    }
+
+
+    // adapter with a timer for Jacobian
+    inline std::vector<Real> jacobian(cl::tape_function<double>& f, std::vector<Real> const& x, size_t iterNum, double& time)
+    {
+        std::vector<double> xd, yd;
+        std::for_each(x.cbegin(), x.cend(),
+            [&](Real const& a){ xd.push_back(double(a)); }
+        );
+
+        boost::timer timer;
+        for (size_t i = 0; i < iterNum; ++i)
+            yd = f.Jacobian(xd);
+        time = timer.elapsed() / iterNum;
+
+        std::vector<Real> y;
+        std::for_each(yd.cbegin(), yd.cend(),
+            [&](double const& a){ y.push_back(Real(a)); }
+        );
+        return y;
     }
 
 }

@@ -18,8 +18,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef ad_termstructures_hpp
-#define ad_termstructures_hpp
+#ifndef cl_adjoint_termstructures_hpp
+#define cl_adjoint_termstructures_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 
@@ -33,4 +34,4 @@ public:
     static boost::unit_test_framework::test_suite* suite();
 };
 
-#endif 
+#endif

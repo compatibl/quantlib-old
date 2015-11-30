@@ -22,8 +22,9 @@ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.  See the license for more details.
 */
 
-#ifndef adjoint_swaption_hpp
-#define adjoint_swaption_hpp
+#ifndef cl_adjoint_swaption_hpp
+#define cl_adjoint_swaption_hpp
+#pragma once
 
 #include <boost/test/unit_test.hpp>
 
@@ -31,11 +32,9 @@ class AdjointSwaptionTest
 {
 public:
     static bool testSpreadDependency();
-    static bool testStrikeDependency();
-    static bool testSpreadTreatment();
+    static bool testSpreadCorrection();
     static bool testCachedValue();
-    static bool testCashSettledSwaptions();
     static boost::unit_test_framework::test_suite* suite();
 };
 
-#endif 
+#endif
