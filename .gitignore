@@ -105,19 +105,10 @@ XL-Launcher/bin/Debug/
 XL-Launcher/bin/Release/
 XL-Launcher/obj/
 
-# Build outputs
-**/x64/Debug
-**/x64/Release
-**/Debug
-**/Release
-**/bin/*.xml
-**/bin/*.manifest
-
 # Artifacts created in multiple directories
 Makefile
 !QuantLibAddin/swig/Makefile
 Makefile.in
-testCaseCollection.xml
 .deps
 .libs
 *.la
@@ -129,18 +120,20 @@ testCaseCollection.xml
 *.exe
 *.dll
 *.exp
+*.obj
 *.lib
 *.pdb
 *.ilk
+*.tlog
+*.idb
 *.class
 *~
 *.ncb
 *.suo
-*.vcproj.*.user
-*.vcxproj.user
 *.log
 *.sdf
 *.opensdf
+*.manifest
 
 # Outputs
 QuantLib/Examples/BasketLosses/BasketLosses
